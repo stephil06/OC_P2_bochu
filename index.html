@@ -1,10 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title></title>
+   <title>Booki - Trouver votre hébergement</title> <!-- pour mentionner dans le titre du navigateur -->
    <link rel="stylesheet" type="text/css" href="styles.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
 </head>
+
+<!-- header avec LOGO & NAV & H1 & P ****************************************** -->
+<header>
+  <img src="./images/logo/booki.png" alt ="le logo" />
+  <nav>
+    <a href="index.php"><strong>Hébergements</strong></a>
+    <a href="blog.php"><strong>Activités</strong></a>
+   </nav>
+   <h1>Trouver votre hébergement pour des <strong>vacances</strong> de rêve</h1>
+   <p>En plein centre ville ou en pleine nature</p>
+</header>
+<!-- header avec LOGO & NAV & H1 & P ****************************************** -->
+
 <body>
-   <h1>Un super stephane !</h1>
+
+  <article itemscope itemtype="http://data-vocabulary.org/Organization">
+    <h1 itemprop="name">Google, Inc.</h1>
+    <p itemprop="address" itemscope="itemscope" itemtype="http://data-vocabulary.org/Address">
+      <span itemprop="street-address">1600 Amphitheatre Parkway</span><br>
+      <span itemprop="locality">Mountain View</span>, <span itemprop="region">CA</span> <span itemprop="postal-code">94043</span><br>
+      <span itemprop="country-name">USA</span>
+    </p>
+    <p>
+      US: <span itemprop="tel">650-253-0000</span><br>
+      UK: <span itemprop="tel">00-1-650-253-0000</span>
+    </p>
+    <p itemprop="url"><a href="http://www.google.com/">Google.com</a></p>
+    <span itemprop="geo" itemscope="itemscope" itemtype="http://data-vocabulary.org/Geo">
+      <meta itemprop="latitude" content="37.4149" />
+      <meta itemprop="longitude" content="-122.078" />
+    </span>
+  </article>
+
+  <!-- 1 carte d'hebergement ***************************************************** -->
+ <article class="carte_hebergement">
+  <a href="#">
+     <img class = "c_photo_hebergement" src="./images/hebergements/4_small/h1.jpg" alt="photo hébergement 1" height= "25%" width="25%"/>
+     <span s_hebergement = "nom_hebergement">Auberge La Cannebière</span>
+     <span s_hebergement ="prix">Nuit à partir de 25 €</span>
+     <span s_hebergement ="evaluation"><i class="fa fa-star"></i> <i class="fa-duotone fa-star"></i></span> 
+  </a>
+</article>
+
+<!-- 1 carte d'activite ***************************************************** -->
+<article class="carte_activite">
+  <a href="#">
+     <img class = "c_photo_activite" src="./images/activites/4_small/a1.jpg" alt="photo activité 1" height= "25%" width="25%"/>
+     <span s_activite = "nom_activite">Notre-Dame-de-la-Garde</span>
+  </a>
+</article>
+
+
+   <details>
+      <summary display: block>Afficher plus</summary>
+      Hébergements cachés
+  </details>
+  
+
+  <!-- footer avec 3 colonnes ****************************************** -->
+    <footer>
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-sm-4 col-md-3 item">
+                  <h3>Services</h3>
+                  <ul>
+                      <li><a href="#">Web design</a></li>
+                      <li><a href="#">Development</a></li>
+                      <li><a href="#">Hosting</a></li>
+                  </ul>
+              </div>
+              <div class="col-sm-4 col-md-3 item">
+                  <h3>About</h3>
+                  <ul>
+                      <li><a href="#">Company</a></li>
+                      <li><a href="#">Team</a></li>
+                      <li><a href="#">Legacy</a></li>
+                  </ul>
+              </div>
+              <div class="col-sm-4 col-md-3 item">
+                  <h3>Careers</h3>
+                  <ul>
+                      <li><a href="#">Job openings</a></li>
+                      <li><a href="#">Employee success</a></li>
+                      <li><a href="#">Benefits</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+              </div>
+          </div>
+      <address>
+        <a href="mailto:contact@booki.com">Nous contacter</a>
+      </address>
+
+
+
+
+  </footer>
+
+
+
 </body>
 </html>
