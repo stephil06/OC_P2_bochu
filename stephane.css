@@ -1,0 +1,132 @@
+/* Pour importer la police du site i.e Raleway */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+/* Déclaration des variables des couleurs (de la charte) */
+/* Usage : var(--nom_variable); */
+:root {
+    --couleur_bleu:         #0065FC;    /* charte couleur Bleu */
+    --couleur_bleu_clair:   #DEEBFF;    /* charte bleu + clair */
+    --couleur_gris:         #F2F2F2;    /* charte couleur Gris */
+    --color-black:          #000000;    /* couleurs Noir & Blanc : implicites de la charte */
+    --couleur_blanc:        #FFFFFF;    
+}
+
+* {  
+    font-family: "Raleway", "Sans serif";  /* Police du site */
+  }
+
+/* Supprime le picto "triangle" par défaut de la balise <summary> désignant "Afficher plus" */
+#id_summary { 
+    display: block;
+}
+
+/* Pour tous les Liens <a>, supprimer la couleur bleu & le soulignement */
+a {
+    color:                inherit;
+    text-decoration:         none; /* spécifier les décorations linéaires d'un mot eg. si le mot est souligné  */
+}
+
+/* Header ------------------------------------------------------------------------------------ */
+
+.c_header_body {
+
+    background-color: grey;
+    margin-top:     0px;  /* taille de la marge extérieure */
+    padding:        0px; /* taille de la marge intérieure */
+
+    display: flex; flex-direction:row;
+    
+    flex-wrap:wrap; /* retour à la ligne autorisée (cf. maquette mobile) */
+    justify-content: space-between;
+  }
+
+
+.c_nav_header {
+    padding-top: 40px;
+    padding-right:80px;
+}
+
+/* Balise NAV du header */
+.c_nav_header {
+    padding-top: 50px;
+    display: flex;             
+    flex-direction: row;  /* pour que les élements de nav (=> ) se placent par défaut côte à côte */
+    justify-content: space-between; 
+    flex-wrap: wrap;         /* les éléments vont à la ligne lorsqu'il n'y a plus la place */
+    width:300px;
+}
+
+
+/* au survol des éléments <a> de <nav> */
+.c_nav_header a:hover {
+    border-top-color:    var(--couleur_bleu);  /* au survol, ligne Bleu au dessus du lien (cf. capture-écran de la maquette) */
+    color:               var(--couleur_bleu);  /* au survol, ligne Bleu au niveau du lien */
+    border-top: 2px solid var(--couleur_bleu);
+  
+}
+
+/* placer le logo  */
+#id_logo_Booki {
+    margin-right: 20px;
+    margin-left: 60px;
+    margin-top:  20px;
+   
+    height:50px; /* on taille l'image */
+    width:80px; 
+}
+
+/* Footer --------------------------------------------------------------------------------------------------------------------------------------- */
+
+.c_footer {    
+   
+   margin-top:          50px;       /* marge extérieure Haut */
+   margin-left:         0px;
+   padding-top:         58px;       /* marge intérieure haut */
+
+   height:             221px;
+
+   display:             flex;
+   flex-direction:      row;        /* par défaut */
+   flex-wrap:           no wrap;    /* retour à la ligne NON autorisé */
+   justify-content:     flex-start; /* ses enfants sont placés au début */
+
+   background-color:    var(--couleur_gris); /* Fond gris */
+}
+
+/* Ses 3 enfants ------------------------------------ */
+.c_nav_footer_a_propos {
+    margin-left:50px; 
+    display: flex;
+    flex-direction: column; justify-content: flex-start;
+}
+
+.c_nav_footer_nos_hebergements {    
+    margin-left: 220px; /* calc(500- 280) px; */
+    display: flex;
+    flex-direction: column; justify-content: flex-start;
+}
+
+.c_nav_footer_assistance {   
+    margin-left: 290px; 
+    display: flex;
+    flex-direction: column; justify-content:flex-start;
+ }
+
+
+.c_footer h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Au survol des éléments <a> de <nav> du c_footer */
+.c_footer nav a:hover {
+    border-top-color:   transparent;  /* au survol, Pas de ligne Bleu au dessus du lien */
+    color:              var(--couleur_bleu); /* au survol, ligne Bleu au niveau du lien */
+}
+
+/* Pour la balise address "Nous contacter" : passage d'italic (par défaut) à normal */
+.c_adresse {
+    font-style:normal;
+}
