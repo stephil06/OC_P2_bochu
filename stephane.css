@@ -1,7 +1,9 @@
 /* Pour importer la police du site i.e Raleway */
 /* validateur OK */
 
+/*
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+*/
 
 /* Déclaration des variables des couleurs (de la charte) */
 /* Usage : var(--nom_variable); */
@@ -14,7 +16,7 @@
 }
 
 * {  
-    font-family: "Raleway", "Sans serif";  /* Police du site */
+    /* font-family: "Raleway", "Sans serif"; */ /* Police du site */
   }
 
 /* Supprime le picto "triangle" par défaut de la balise <summary> désignant "Afficher plus" */
