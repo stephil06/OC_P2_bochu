@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- validateur OK -->
+  <meta charset="utf-8"><!-- jeu de caractères pour passer au validateur W3C -->
+
+  <!-- Responsive : la largeur de la page du site correspond à la largeur de l'écran du visiteur -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> Booki -trouver votre hébergement pour les vacances </title>
+
+  <!-- importer la font raleway depuis google font ************************************************************* -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" type="text/css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,250;0,400;0,500;1,100;1,900&display=swap"
+  rel="stylesheet"
+  >
+
+  <!-- ajouter une favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="./images/favicon/booki.ico">
+
+  <!-- Fichier CSS pour "Font Awesome" (police de caractères pour afficher des icônes= picto) via CDN (dernière version) -->
+  <!-- version 5.* (la version gratuite) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+  <!-- importer "normalize.css" téléchargé depuis https://github.com/necolas/normalize.css -->
+  <!-- la normalisation du CSS consiste à réajuster tous les styles par défaut des navigateurs afin d'éviter les différences majeurs 
+  de styles et de positionnement -->
+  <link rel="stylesheet" href="normalize.css">
+  <!-- Fichier CSS en local -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Nommage des classes selon la règle "BEM" : c_B__E-modificateur (Bloc__Element-modificateur) -->
+
+  <!-- NAV : Logo & 2 Liens ******************************************************************* -->
+  <nav class="c_nav">
+    <!-- Logo -->
+    <a href="#">
+      <img class="c_nav__img-logo-booki" src="images/logo/Booki.png" 
+      alt="logo de Booki.com (entreprise pour trouver un hébergement pour les vacances)">
+    </a>
+    <!-- 2 Liens -->
+    <div class="c_nav__div-liens">
+      <a href="#id_section-hebergements">Hébergements</a>
+      <a href="#id_section-activites">Activités</a>
+    </div>
+  </nav>
+
+  <!--Header : <h1> & <p> & <form> ************************************************************* -->
+  <header>
+    <h1 class="c_h1">Trouvez votre <strong>hébergement</strong> pour des <strong>vacances</strong> de rêve </h1>
+    <h1 class="c_h1-responsive">Trouvez votre hébergement<br>pour des vacances de rêve</h1>
+    <p> En plein centre ville ou en pleine nature </p>
+
+    <!-- Formulaire de Recherche (& ses 3 éléments) ******************************************** -->
+    <form>
+
+      <!-- 1er élément : label associé au input "search" -->
+      <label class="c_form__label-picto-local" for="i_form_input-search">
+        <i class="fas fa-map-marker-alt"></i> <!-- picto "localisation" -->
+      </label>
+
+      <!-- 2e élément : le input "search" -->
+      <input class="c_form__input-search" id="i_form_input-search" type="search" placeholder="Marseille, France" />
+
+      <!-- 3e élément : le button "Rechercher" -->
+      <button class="c_form__button-rechercher"> Rechercher </button>
+       <!-- 3e élément : le button "Rechercher" version responsive --> 
+      <button type="button" class="c_form__button-rechercher-responsive"><i class="fas fa-search"></i></button> <!-- Picto "Localisation" -->
+    </form>
+  </header>
+
+  <!-- <main> ********************************************************************************************* -->
+  <main>
+
+    <!-- <section> Filtres ******************************************************************************* -->
+    <section class="c_section-filtre">
+      <h2> Filtres </h2>
+      <ul>
+        <!-- Économique ********************************* -->
+        <li>
+          <i class="c_section-filtre__li--cercle-bleu fas fa-money-bill-wave"></i> <!-- Le cercle bleu -->  <!-- Picto "Billet" -->
+          <span> <strong>Économique</strong> </span>
+        </li>
+        <!-- Familial ********************************************* -->
+        <li>
+          <i class="c_section-filtre__li--cercle-bleu fas fa-child"></i> <!-- Le cercle bleu -->  <!-- Picto "Enfant" -->
+          <span> <strong>Familial</strong> </span>
+        </li>
+        <!-- Romantique ****************************************** -->
+        <li>
+          <i class="c_section-filtre__li--cercle-bleu fas fa-heart"></i> <!-- Le cercle bleu --> <!-- Picto "Coeur" -->
+          <span> <strong>Romantique</strong> </span>
+        </li>
+        <!-- Animaux autorisés *********************************** -->
+        <li>
+          <i class="c_section-filtre__li--cercle-bleu fas fa-dog"></i> <!-- Le cercle bleu --> <!-- Picto "Chien" -->
+          <span> <strong>Animaux autorisés</strong> </span>
+        </li>
+      </ul>
+    </section>
+    <!-- Fin de <Section> Filtres *********************************** -->
+
+    <!-- Paragraphe d'info : plus de 500 logements sont dispo ***************************************** -->
+    <div class="c_div-infos c_div-infos--placer">
+      <!-- Picto "Information "i" -->
+      <i class="fas fa-info c_div-infos__i--bleu c_div-infos__i--taille c_div-infos__i--cercle-gris"></i>
+      <p class="c_div-infos__p--taille c_div-infos__p--placer">Plus de 500 logements sont disponibles dans cette ville</p>
+    </div>
+
+
+    <!-- Concernant les sections "Hébergements", "Populaires" et "Activités", toutes les images ont été prises du dossier "4_small"-->
+    <!-- Explications : -->
+    <!-- Réceptacle Hébergements:  240 (L) x 110 (H) ; or en moyenne la taille des images du dossier "4_small" est de 700 x 500 -->
+    <!-- Réceptacle Populaires:    140 (L) x 140 (H) ; or en moyenne la taille des images du dossier "4_small" est de 500 x 750 -->
+    <!-- Réceptacle Activités:     la + grande image 250 (L) x 390 (H) ; or la taille de l'image en question ("vieux-port") : 702 (L) x 468 (H) -->
+
+    <!-- <SECTION> Hébergements ****************************************************************************** -->
+    <section class="c_section-hebergements" id="id_section-hebergements">
+
+      <div class="c_section-hebergements__div-h-et-les-articles-et-a">
+        <h2>Hébergements à Marseille</h2>
+
+        <div class="c_section-hebergements__div-les-articles">
+          <!--"Auberge La Cannebière" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/auberge-la-cannebiere.jpg"
+                alt="Auberge La Cannebière - Chambre avec 2 lits superposés et 2 fenêtres donnant sur la Cannebière"
+                title="2 lits superposés">
+
+              <div class="c_section-hebergements__div-description">
+                <h3> Auberge La Cannebière </h3>
+                <p> Nuit à partir de 25€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!-- picto "star", suivi de sa couleur -->
+                  <!-- NB: possibilité (via CSS) de modifier les pictos d'évaluation dans un symbole donné (eg. coeur) -->
+                  <!-- cf. c_section-hebergements .fa-star::before --> 
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!--"Hôtel du port" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/hotel-du-port.jpg" 
+              alt="Hôtel du port - Chambre avec 2 lits séparés (avec une table de chevet au milieu), et équipée d'une climatisation, 
+                et d'un miroir face aux lits" title="2 lits séparés">
+
+              <div class="c_section-hebergements__div-description">
+                <h3> Hôtel du port </h3>
+                <p> Nuit à partir de 52€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Hôtel Les mouettes" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/hotel-les-mouettes.jpg"
+                alt="Hôtel Les mouettes - Chambre avec un lit de 2 personnes (équipée d'une table de chevet) et d'un dressing avec façade miroir"
+                title="un lit de 2 personnes">
+              <div class="c_section-hebergements__div-description">
+                <h3> Hôtel Les mouettes </h3>
+                <p> Nuit à partir de 76€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Hôtel de la mer" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/hotel-de-la-mer.jpg"
+                alt="Hôtel de la mer - Chambre avec un lit 2 personnes (avec 2 tables de chevet), équipée d'un canapé bleu 2 places" 
+                title="un lit de 2 personnes">
+              <div class="c_section-hebergements__div-description">
+                <h3> Hôtel de la mer </h3>
+                <p> Nuit à partir de 46€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Auberge Le Panier" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/auberge-le-panier.jpg"
+                alt="Auberge Le Panier - Chambre avec un lit superposé, chaque lit est équipé d'un rideau occultant" 
+                title="un lit superposé">
+              <div class="c_section-hebergements__div-description">
+                <h3> Auberge Le Panier </h3>
+                <p> Nuit à partir de 23€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Hôtel chez Amina" -->
+          <article class="c_section-hebergements__article">
+            <a href="#">
+              <img src="images/hebergements/hotel-chez-amina.jpg"
+                alt="Hôtel chez Amina - Chambre lumineuse avec 2 lits séparés, équipée d'un téléviseur, d'un téléphone et d'un bureau" 
+                title="2 lits séparés">
+              <div class="c_section-hebergements__div-description">
+                <h3> Hôtel chez Amina </h3>
+                <p> Nuit à partir de 96€ </p>
+                <div class="c_section-hebergements__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div> <!-- fin de <div class="c_section-hebergements__div-les-articles"> -->
+        
+        <a href="#" class="c_section-hebergements__a-afficher-plus">Afficher plus</a>
+
+      </div> <!-- fin de <div class="c_section-hebergements__div-h-et-les-articles-et-a" -->
+
+      <!-- <SECTION> les plus populaires ******************************************************************************** -->
+      <section class= "c_section-hebergements-populaires">
+        <h2> Les plus populaires
+          <i class="fas fa-star c_picto--couleur-noir"></i> <!--- picto "star" en couleur noir -->
+        </h2>
+        <div class="c_section-hebergements-populaires__div-les-articles">
+
+          <!-- "Hôtel le soleil du matin" -->
+          <article class="c_section-hebergements-populaires__article">
+            <a href="#">
+              <img src="images/hebergements/populaires/hotel-le-soleil-du-matin.jpg" alt="Hôtel Le soleil du matin - Chambre équipée d'un lit de 2 personnes
+               (avec tapisserie verte et rideaux verts) et d'un miroir mosaïque, avec fenêtre vue sur la ville" title="lit de 2 personnes">
+
+              <div class="c_section-hebergements-populaires__div-description">
+                <h3> Hôtel Le soleil du <br> matin </h3>
+                <p> Nuit à partir de 128€ </p>
+                <div class="c_section-hebergements-populaires__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Au coeur de l'eau Chambres d'hôtes" -->
+          <article class="c_section-hebergements-populaires__article">
+            <a href="#">
+              <img src="images/hebergements/populaires/au-coeur-de-l-eau-chambres-d-hotes.jpg" 
+              alt="Au coeur de l'eau Chambres d'hôtes - Chambre spacieuse équipée d'un lit de 2 personnes (tête de lit capitonnée),
+               (avec 2 tables de chevet), et sol aspect marbre" title="lit de 2 personnes">
+
+              <div class="c_section-hebergements-populaires__div-description">
+                <h3> Au coeur de l'eau <br> Chambres d'hôtes </h3>
+                <p> Nuit à partir de 71€ </p>
+                <div class="c_section-hebergements-populaires__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- "Hôtel Tout bleu et Blanc" -->
+          <article class="c_section-hebergements-populaires__article">
+            <a href="#">
+              <img src="images/hebergements/populaires/hotel-tout-bleu-et-blanc.jpg"
+                alt="Hôtel Tout bleu et Blanc - Chambre spacieuse équipée d'un lit de 2 personnes (2 tables de chevet), avec parquet en bois"
+                title="lit de 2 personnes">
+
+              <div class="c_section-hebergements-populaires__div-description">
+                <h3> Hôtel Tout bleu et <br> Blanc </h3>
+                <p> Nuit à partir de 68€ </p>
+                <div class="c_section-hebergements-populaires__div-evaluation">
+                  <!--- picto "star", suivi de sa couleur -->
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ok"></i>
+                  <i class="fas fa-star c_picto-evaluation--couleur-ko"></i>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section> <!-- Fin de <section> les plus populaires -->
+     </section> 
+     <!-- Fin de <SECTION> Hébergements -->
+
+    <!-- <SECTION> Activités ****************************************************************************** -->
+    <section class="c_section-activites" id="id_section-activites">
+
+      <h2>Activités à Marseille</h2>
+
+      <div class="c_section-activites__div-les-articles">
+
+        <!-- "Vieux Port" -->
+        <article class="c_section-activites__article-solo">
+          <a href="#">
+            <img src="images/activites/vieux-port.jpg" alt="Vieux Port - Port de plaisance (comportant de nombreux bateaux) 
+            au premier plan, avec vue sur la basilique Notre-Dame-de-la-Garde au second plan" title="Port de plaisance">
+            <!--zz -->
+            <h3> Vieux Port </h3>
+          </a>
+        </article>
+
+        <div class="c_section-activites__article-duo">
+          <!--  "Fort de Pomègues" -->
+          <article class="c_section-activites__article-duo-gauche-haut">
+            <a href="#">
+              <img src="images/activites/fort-de-pomegues.jpg"
+                alt="Fort de Pomègues - Amas de roches grises au premier plan, suivi d'un fort de couleur gris au second plan" title="Fort">
+              <h3> Fort de Pomègues </h3>
+            </a>
+          </article>
+
+          <!-- "Îles du Frioul" -->
+          <article class="c_section-activites__article-duo-gauche-bas">
+            <a href="#">
+              <img src="images/activites/iles-du-frioul.jpg"
+                alt="Îles du Frioul - Panorama avec vue sur la Mer Méditerranée, montrant au second plan les Îles du Frioul" title="Îles">
+              <h3> Îles du Frioul </h3>
+            </a>
+          </article>
+        </div>
+
+        <!-- "Parc National des Calanques" -->
+        <article class="c_section-activites__article-solo">
+          <a href="#">
+            <img src="images/activites/parc-national-des-calanques.jpg"
+              alt="Parc National des Calanques - Paysage avec au premier plan les rochers, et au second plan la Mer Méditerranée" title="Calanques">
+            <h3> Parc National des Calanques </h3>
+          </a>
+        </article>
+
+        <div class="c_section-activites__article-duo">
+          <!--"Notre-Dame-de-la-Garde" -->
+          <article class="c_section-activites__article-duo-droit-haut">
+            <a href="#">
+              <img src="images/activites/notre-dame-de-la-garde.jpg" 
+              alt="Notre-Dame-de-la-Garde - Paysage avec au premier plan des habitations et au second plan une colline sur laquelle est située la Basilique"
+              title="Basilique">
+              <h3> Notre-Dame-de-la-Garde </h3>
+            </a>
+          </article>
+
+          <!--"Parc Longchamp" -->
+          <article class="c_section-activites__article-duo-droit-bas">
+            <a href="#">
+              <img src="images/activites/parc-longchamp.jpg"
+                alt="Parc Longchamp - Bâtiment aux pierres blanches présentant au premier plan une fontaine et de la verdure"
+                title="Parc">
+              <h3> Parc Longchamp </h3>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- fin de <SECTION> Activités -->
+
+  </main>
+
+
+  <!-- Footer *********************************************************************************************** -->
+  <footer>
+
+    <!-- A propos *************************************** -->
+    <div class="c_footer__div-a-propos">
+      <h2>A propos</h2>
+      <ul>
+        <li><a href="#">Fonctionnement du site</a></li>
+        <li><a href="#">Conditions générales de vente</a></li>
+        <li><a href="#">Données et confidentialité</a></li>
+      </ul>
+    </div>
+    <!-- Nos hébergements ******************************* -->
+    <div class="c_footer__div-nos-hebergements">
+      <h2>Nos hébergements</h2>
+      <ul>
+        <li><a href="#">Charte qualité</a></li>
+        <li><a href="#">Soumettre votre hôtel</a></li>
+      </ul>
+    </div>
+
+    <!-- Assistance ************************************* -->
+    <div class="c_footer__div-assistance">
+      <h2>Assistance</h2>
+      <ul>
+        <li><a href="#">Centre d'aide</a></li>
+
+        <li>
+          <address class="c_adress-nous-contacter">
+            <a href="mailto:contact@booki.com"> Nous contacter </a>
+          </address>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+
+</html>

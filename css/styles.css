@@ -1,156 +1,172 @@
-/* Pour importer la police du site i.e Raleway */
-/* validateur OK */
-
-/*
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-*/
-
-/* Déclaration des variables des couleurs (de la charte) */
+/* Déclaration des variables -----------------------------------------------------------------------  */
 :root {
-    --couleur_bleu:         #0065FC;    /* charte couleur Bleu */
-    --couleur_bleu_clair:   #DEEBFF;    /* charte bleu + clair */
-    --couleur_gris:         #F2F2F2;    /* charte couleur Gris */
-    --couleur_noir:         #000000;    /* couleurs Noir & Blanc : implicites de la charte */
-    --couleur_blanc:        #FFFFFF;    
+    /* Couleurs (de la charte) */
+    --couleur_bleu: #0065FC;            /* charte couleur Bleu */
+    --couleur_bleu_clair: #DEEBFF;      /* charte bleu + clair */
+    --couleur_gris: #F2F2F2;            /* charte couleur Gris */
+    --couleur_noir: #000000;            /* couleurs (implicites de la charte) : Noir & Blanc */
+    --couleur_blanc:#FFFFFF;    
 
-    --marge_ext_gauche:     50px;
+    --marge_ext_gauche-droite: 50px;     /* (1440px - 1390px) : marge externe Gauche ou Droite */
+
+    --formulaire_hauteur: 50px;         /* hauteur du formulaire & largeur du "Picto de localisation" */
+    --formulaire_radius: 15px;          /* radius pour les élements du formulaire "Picto de localisation" & Button "rechercher" */
+
+    /* Concernant les "hébergements", Radius de la section, d'un article & d'une image */
+    --hebergements_radius : 20px;
+
+    /* Concernant les "Hébergements Populaires", largeur d'un article & du <h2> */
+    --hebergements-populaires__article_largeur: 345px; /* 1350px - 1005px */
+    /* Concernant les "Hébergements Populaires", Radius de la section & des articles */
+    --hebergements-populaires_radius: 20px;
+ 
+    /* Concernant les "activités", Largeur d'un Article & d'une Image */
+    --activites__article_largeur: 300px; /* 350px - 50px */
+    /* Concernant les "activités", Radius d'un Article & d'une Image */
+    --activite_radius: 20px;
+
+    /* Concernant le picto évaluation : Couleurs & Forme ("étoile par défaut) */
+    --picto-evaluation-couleur-ok: var(--couleur_bleu);     /* bien notée */
+    --picto-evaluation-couleur-ko: var(--couleur_gris);     /* mal notée */     
+    --picto-evaluation-symbole: "\f005";                    /* etoile */
+    /* --picto-evaluation-symbole: "\f004";  */             /* coeur */
 }
 
-main {
-    margin: 0  var(--marge_ext_gauche); /* marges extérieures : 0 pour les côtés haut et bas ; 50px pour les côtés gauche et droit */
-}
+/* ORDINATEUR---------------------------------------------------------------------------------------- */
 
-/* Pour tous les Liens <a>, supprimer la couleur bleu & le soulignement (par défaut) */
+/* Cacher les éléments responsive ---------------------------------------------- */
+/* Cacher le Button "rechercher" responsive  & <h1> (du <header>) responsive */
+.c_form__button-rechercher-responsive, .c_h1-responsive { display: none; }
+
+/* Pour toutes les images : 
+    adapter ses dimensions à son conteneur (couvrir la totalité du conteneur en gardant les proportions de l'image) 
+*/
+img { object-fit: cover; }
+
+/* Pour l'image Logo : oter cette propriété de "cover" */
+.c_nav__img-logo-booki { object-fit: inherit; }
+
+/* Pour tous les Liens <a> : supprimer la couleur bleu & le soulignement (par défaut) */
 a {
-    color:                inherit;
-    text-decoration:         none; /* spécifier les décorations linéaires d'un mot eg. si le mot est souligné  */
+    color: inherit;
+    text-decoration: none; /* spécifier les décorations linéaires d'un mot eg. si le mot est souligné  */
 }
+
+/* Pour le <main> (i.e. entre le <header> & le <footer>) : poser les marges externes */
+main {
+    margin: 0 var(--marge_ext_gauche-droite); /* marges externes : 0 pour les côtés haut et bas ; 50px pour les côtés gauche et droit */
+}
+
+/* demande de mon mentor */
+body {
+    max-width: 1920px; 
+    margin-left: auto; margin-right :auto;
+}
+
 
 /* NAV : Logo & 2 Liens ----------------------------------------------------------------------- */
 
-/* Balise NAV du header */
+/* Balise NAV */
 .c_nav {
     padding-top: 50px;
     display: flex;             
-    flex-direction: row;  /* pour que les élements de nav se placent par défaut côte à côte */
+    flex-direction: row;        /* pour que les élements de nav se placent par défaut côte à côte */
     justify-content: space-between; 
-    flex-wrap: wrap;         /* les éléments vont à la ligne lorsqu'il n'y a plus la place */
+    flex-wrap: wrap;            /* les éléments vont à la ligne lorsqu'il n'y a plus la place */
 }
 
-.c_nav__div-2liens {
-    display:flex; flex-direction: row;
+.c_nav__div-liens {
+    display: flex; flex-direction: row;
     justify-content: space-between; 
-    width: calc(1360px - 1120px); /* soit 240px; */ 
-    margin: 10px; margin-right:80px;
+    width: 240px; /* 1360px - 1120px */ 
+    margin: 10px; margin-right: 80px;
 }
 
-/* placer le logo  */
+/* Placer le logo & tailler son image  */
 .c_nav__img-logo-booki {
-     margin-left:50px;
-     /* on taille l'image */
-     height: calc(90px - 40px); /* 50px; */
-     width: calc(140px - 60px); /* 80px; */ 
+     margin-left: 50px;
+     height: 50px;  /* 90px - 40px */
+     width: 80px;   /* 140px - 60px */
  }
 
-/* au survol des éléments <a> de "c_nav__div-2liens" */
-.c_nav__div-2liens a:hover {
-    border-top-color:    var(--couleur_bleu);  /* au survol, ligne Bleu au dessus du lien (cf. capture-écran de la maquette) */
-    color:               var(--couleur_bleu);  /* au survol, ligne Bleu au niveau du lien */
+/* au survol des éléments <a> de "c_nav__div-liens" */
+.c_nav__div-liens a:hover {
+    /* padding: 10px; */
+    border-top-color: var(--couleur_bleu);      /* au survol, ligne Bleu au dessus du lien (cf. capture-écran de la maquette) */
+    color: var(--couleur_bleu);                 /* au survol, ligne Bleu au niveau du lien */
     border-top: 2px solid var(--couleur_bleu);
 }
 
 /* Header ------------------------------------------------------------------------------------ */
 
 header {
-    margin-left:    var(--marge_ext_gauche);
-    margin-top:     0px;  /* taille de la marge extérieure */
-    padding:        0px; /* taille de la marge intérieure */
+    margin-left: var(--marge_ext_gauche-droite);
+    margin-top: 0px;        /* taille de la marge externe */
+    padding: 0px;           /* taille de la marge interne */
 
-    display: flex; flex-direction:column;
-    flex-wrap:wrap; /* retour à la ligne autorisée (cf. maquette mobile) */
+    display: flex; flex-direction: column;
+    flex-wrap: wrap;        /* retour à la ligne autorisée (cf. maquette mobile) */
     justify-content: space-between;
 }
 
 /* on met en forme le <h1> & le <p> du <header> */
-header h1{
-    font-size:    20px;
-    margin-top:   25px;
+header h1 {
+    font-size: 20px;
+    margin-top: 25px;
 }
   
 header p {
-    font-size:   15px;
-    margin-top:  -5px;
+    font-size: 15px;
+    margin-top: -5px;
 }
   
-/* le Formulaire & ses 3 éléments  ------------------------------------------------------------------- */
-:root {
-    --formulaire_hauteur:   50px;
-    --formulaire_rayon:     10px;
-
-    --rayon_article:        20px;
-    --rayon_section:        20px;
-  } 
-  
+/* le Formulaire & ses 3 éléments  ------------------------------------------------------------------- */ 
 form{
     height: var(--formulaire_hauteur); /* 50px  => height(Label, Input & Button) = 50 px */
     display: flex;
 }
   
-  /* Ses 3 éléments ------------------------------------------------------------- */
-
-:root {
-    --form__label-picto-local:10px;
-}
-
   /* 1e élément : Picto de localisation --------------------------- */
   /* Un carré fond gris aux bords gauche haut & bas arrondis */
   .c_form__label-picto-local{
-      background-color:         var(--couleur_gris); /* Fond en Gris */
-      width:                    var(--formulaire_hauteur);                 
-      border-top-left-radius:           var(--form__label-picto-local); /* 10px; */ /* radius gauche haut */
-      border-bottom-left-radius:        var(--form__label-picto-local); /*10px; */ /* radius gauche bas */
-      display:                          flex;
-      justify-content:                center;  /* Pour que le picto se mette au centre sur l'axe X */
-      align-items:                    center; /* Pour que le picto se mette au centre sur l'axe Y */
+      background-color: var(--couleur_gris);                /* Fond en Gris */
+      width: var(--formulaire_hauteur);                 
+      border-top-left-radius: var(--formulaire_radius);      /* radius gauche haut */
+      border-bottom-left-radius: var(--formulaire_radius);   /* radius gauche bas */
+      display: flex;
+      justify-content: center;                              /* Pour que le picto se mette au centre sur l'axe X */
+      align-items: center;                                  /* Pour que le picto se mette au centre sur l'axe Y */
   }
   
   /* 2e élément : input-search ------------------------------------ */
-
-  :root {
-    --form__input-search_largeur: calc(340px - 110px); /* soit 230px; */
-  }
-
-  .c_form__input-search{
-      border:            solid var(--couleur_gris);  /* Bordure en Gris */
-      text-align:                             left;  /* Texte à gauche */
-      font-weight:                            bold;  /* Texte mis en gras */
-      width: var(--form__input-search_largeur);
+  .c_form__input-search {
+    border: solid var(--couleur_gris);      /* Bordure en Gris */
+    text-align: left;                       /* Texte à gauche */
+    font-weight: bold;                      /* Texte mis en gras */
+    width: 230px;                           /* 340px - 110px */
   }
   
   /* 3e élément : Button "rechercher" ------------------------------ */
   /* aux Bords à droite haut & bas arrondis */
-  :root {
-    --form__button-rechercher_largeur: calc(470px - 340px); /* soit 130px; */
-  }
-
   .c_form__button-rechercher{
-      background-color:              var(--couleur_bleu); /* Fond en Bleu */
-      color:                        var(--couleur_blanc); /* Texte en Blanc */
-      border:                          none;
-      border-top-right-radius:       var(--formulaire_rayon); /* radius à droite haut */
-      border-bottom-right-radius:    var(--formulaire_rayon); /* radius à droite bas */
-      font-weight:                     bold; /* pour mettre en gras */ 
-      width:  var(--form__button-rechercher_largeur);
-  }
-  
+      background-color: var(--couleur_bleu);                /* Fond en Bleu */
+      color: var(--couleur_blanc);                          /* Texte en Blanc */
+      border: none;
+      border-top-right-radius: var(--formulaire_radius);     /* radius à droite haut */
+      border-bottom-right-radius: var(--formulaire_radius);  /* radius à droite bas */
+      font-weight: bold;                                    /* mettre en gras */ 
+      width: 130px;                                         /* 470px - 340px */
+      cursor: pointer;                                      /* on représente le curseur par "une main" */
+    }
+
 /* Section "Filtres" & ses 4 Filtres  ------------------------------------------------------------------------- */
   
 .c_section-filtre {
     display: flex;
-    flex-wrap:wrap; /* ses éléments peuvent être affichés sur plusieurs lignes (cf. maquette mobile) */
+    flex-wrap:wrap;     /* ses éléments peuvent être affichés sur plusieurs lignes (cf. maquette mobile) */
     align-items: center;
 
-    margin-top:  20px; /* à placer en marge haute par rapport au Formulaire */
+    margin-top: 20px;   /* à placer en marge haute par rapport au Formulaire */
 }
 
 .c_section-filtre h2 {
@@ -158,51 +174,44 @@ form{
     font-weight: bold;
 }
 
-:root {
-    --section-filtre__ul_gap: calc(365px - 340px);  /* soit 25px : espace entre ses éléments-enfants Rectangle (<li>) */
-    --section-filtre__li_radius: 25px;
-} 
-
 .c_section-filtre ul {
     display: flex;
     flex-wrap: wrap; 
-    gap: var(--section-filtre__ul_gap);  /* soit 25px : espace entre ses éléments-enfants Rectangle (<li>) */
+    gap: 25px;          /* (365px - 340px) : espace entre ses éléments-enfants Rectangle (<li>) */
 }
 
-/* on fait le Rectangle gris (avec sa courbure) */
+/* on fait le Rectangle gris (avec sa courbure) 
+   on représente le curseur par "une main"
+*/
 .c_section-filtre li {
     display: flex;
     align-items: center;
     
-    border: 4px solid var(--couleur_gris); /* bordure */
-    border-radius: var(--section-filtre__li_radius); /* courbure du rectangle */
+    border: 4px solid var(--couleur_gris);      /* bordure */
+    border-radius: 25px;                        /* courbure du rectangle */
+    cursor: pointer;                            /* Le curseur est "une main" */
 }
-
-
-:root {
-    --section-filtre__li--cercle-bleu_rayon: calc(330px - 280px); /* 50px; */
-} 
 
 /* on fait le cercle bleu-clair */
 .c_section-filtre__li--cercle-bleu {
-    width:  var(--section-filtre__li--cercle-bleu_rayon);  
-    height: var(--section-filtre__li--cercle-bleu_rayon);
+    width:  50px;           /* 330px - 280px */   
+    height: 50px;           /* 330px - 280px */
     border-radius: 50%;
     background-color: var(--couleur_bleu_clair);
 
     text-align: center;
-    line-height: 3; /* facteur multiplicateur de la taille de la police appliquée à l'élément Picto */
-    margin-left:-10px; /* décaler à gauche le cercle (de 10px) par rapport à son frère "rectangle" */
+    line-height: 3;         /* facteur multiplicateur de la taille de la police appliquée à l'élément Picto */
+    margin-left:-10px;      /* décaler à gauche le cercle (de 10px) par rapport à son frère "rectangle" */
 }
 
 .c_section-filtre span {    
     font-size: 17px; font-weight: bold;
-    padding-left:20px; padding-right:20px; /* on étend les marges */
+    padding-left: 20px; padding-right: 20px; /* on étend les marges */
 }
 
 /* Mettre les 4 picto en Bleu */
 .fa-money-bill-wave, .fa-child, .fa-heart, .fa-dog {
-     color:    var(--couleur_bleu);
+    color: var(--couleur_bleu);
 }
 
 /* au survol des 4 filtres, changement d'apparence  */
@@ -215,14 +224,14 @@ form{
 /* Informations ------------------------------------------------------------ */
 
 .c_div-infos {
-    display:        flex;
-    align-items:    center;
+    display: flex;
+    align-items: center;
 }
 
 .c_div-infos--placer {
-    margin-left:    0px; 
-    margin-top:     10px;
-    margin-bottom:  10px;
+    margin-left: 0px; 
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 /* Pour le Picto du Paragraphe d'info : plus de 500 logements sont dispo */
@@ -241,20 +250,16 @@ form{
     font-size: 10px;
 }
 
-:root {
-    --div-infos__i--cercle-gris_rayon: calc(385px - 365px); /* soit 20px */
-}
-
-/* Faire un cercle gris de rayon 20px, avec placement au centre du picto  */
+/* Faire un cercle gris de diamètre 20px, avec placement au centre du picto  */
 .c_div-infos__i--cercle-gris {
-    display:            flex;
-    align-items:        center; /* pour centrer le picto */
-    justify-content:    center;
-    border-radius:      50%;    /* cercle */
-    /* rayon du cercle */
-    width:             var(--div-infos__i--cercle-gris_rayon);
-    height:            var(--div-infos__i--cercle-gris_rayon); 
-    border:             3px solid var(--couleur_gris);  /* Bordure du Picto en Gris */
+    display: flex;
+    align-items: center; /* pour centrer le picto */
+    justify-content: center;
+    border-radius: 50%;    /* cercle */
+    /* diametre du cercle */
+    width: 20px;                /* 385px - 365px */
+    height: 20px;               /* 385px - 365px */
+    border: 3px solid var(--couleur_gris);  /* Bordure du Picto en Gris */
 }
 
 /* Pour <p>, on ajuste font-size & on le place par rapport au picto */
@@ -275,82 +280,48 @@ form{
 
 /* <section> HEBERGEMENTS -------------------------------------------------------------------------------------- */
 
-:root {
-    --section-hebergements_largeur: calc(930px - 50px); /* 880px */
-
-    /* calculer le gap (entre les sections "hébergements & "populaires") */
-    --section-hebergements_gap: calc(970px - 930px); /* 40px */
-
-    --section-hebergements_radius : 20px;
-    --section-hebergements_margin-top : calc(425px - 385px); /* 40px; */
-}
-
+/* on définit le gap (entre les sections "hébergements & "populaires") */
 .c_section-hebergements {
-    margin-top: var(--section-hebergements_margin-top);
+   /* margin-top: 0px; */ /* 40px; */ /* 425px - 385px */
     display: flex; flex-direction: row;
-    gap: var(--section-hebergements_gap);
-}
-
-/* Calculer les marges internes */
-:root {
-    --hebergements_padding-haut:    calc(475px - 430px); /* 35px */
-    --hebergements_padding-droit:   calc(930px - 890px); /* 40px */
-    --hebergements_padding-bas: 0px;
-    --hebergements_padding-gauche:  calc(90px - 50px);  /* 40px */
+    gap: 40px; /* 970px - 930px */
 }
 
 /* Pour la section "hébergement" : 
+    - on définit la largeur
     - on met le fond en gris
     - on arrondit les 4 angles
     - on définit les marges internes
 */
-.c_section-hebergements__div {
+.c_section-hebergements__div-h-et-les-articles-et-a {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 
-    background-color: var(--couleur_gris);
-    border-radius: var(--section-hebergements_radius); width: var(--section-hebergements_largeur);
+    /* width: 880px; */ /* 930px - 50px */ width: 66.67%; /* mentor */
 
-   /* haut | droit | bas | gauche */
-   padding: var(--hebergements_padding-haut) var(--hebergements_padding-droit) 0px var(--hebergements_padding-gauche);
+    background-color: var(--couleur_gris);
+    border-radius: var(--hebergements_radius);
+
+   /* haut ; droit ; bas ; gauche */
+   /* 45px (475px - 430px) ; 40px (930px - 890px) ; 0px ; 40px (90px - 50px) */
+   padding: 20px 40px 0px 40px;
+   /* padding: 45px 40px 0px 40px; */
+
 }
 
 /* On taille le <h2> */
-.c_section-hebergements__div h2 {
+.c_section-hebergements__div-h-et-les-articles-et-a h2 {
     font-size: 25px;
 }
 
-/* On calcule le gap (horizontal & vertical) entre les articles */
-:root {
-    --hebergements_article_gap : calc(367px - 337px); /* 30px */
-}
-
-/* On définit le gap entre les articles */
-.c_section-hebergements__div2 {
-    /* background:green; */
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: var(--hebergements_article_gap);
- 
-    padding-top: var(--hebergements_article_gap);
-    padding-bottom: 60px; 
-}
-
-/* On calcule la Hauteur & la Largeur (en px) d'un article
-   On calcule la Hauteur & la Largeur (en px) d'une image
-   On définit le radius d'un article & d'une image  
-*/
-:root {
-    --section-hebergements__article_hauteur: calc(717px - 517px);       /* 200px */
-    --section-hebergements__article_largeur: calc(335px - 90px);        /* 245px */
-
-    --section-hebergements__article__img_hauteur: calc(635px - 525px);  /* 110px */
-    --section-hebergements__article__img_largeur: calc(330px - 95px);   /* 235px */
-
-    --section-hebergements__article_radius: 20px;
-    --section-hebergements__img_radius: 20px;
+/* On définit le gap (horizontal & vertical) entre les articles */
+.c_section-hebergements__div-les-articles {
+    background:green;
+    display:flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start;
+    gap: 30px;     /* 367px - 337px */ 
+   /*  padding-top: 10px; */ /* 30px; */          /* 367px - 337px */
+   /*  padding-bottom: 60px; */ 
 }
 
 /* Pour chaque article, 
@@ -360,14 +331,14 @@ form{
     - on crée une bordure en blanc
 */
 .c_section-hebergements__article {
-    width: var(--section-hebergements__article_largeur);
-    height: var(--section-hebergements__article_hauteur);
+    width: 245px; /* 335px - 90px */
+    height: 200px; /* 717px - 517px */
 
     background-color: var(--couleur_blanc);
-   
-    border-radius: var(--section-hebergements__article_radius);
+    border-radius: var(--hebergements_radius);
     border: 4px solid var(--couleur_blanc);
     line-height: 1.5;
+    /* margin-bottom: 50px; */
 }
 
 /* Pour chaque image :
@@ -376,57 +347,51 @@ form{
     - on arrondit les 2 angles du haut
 */
 .c_section-hebergements__article img {
-    width: 100%;
-    height: var(--section-hebergements__article__img_hauteur); /* 110px; */
-    border-radius: var(--section-hebergements__img_radius) var(--section-hebergements__img_radius) 0 0;
+    width: 100%;        /* 235px; */ /* 330px - 95px  */
+    height: 110px;      /* 635px - 525px */
+    border-radius: var(--hebergements_radius) var(--hebergements_radius) 0 0;
 }
 
-/* Pour la description, on décale à gauche de 10px */
+/* Pour la description :
+    - on place ses enfants en colonne (i.e. <h3>, <p> & ses pictos "évaluation")
+    - on décale à gauche de 10px */
 .c_section-hebergements__div-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 10px;
+    display: flex; flex-direction: column;
+    /* background-color: pink; */ line-height: 0.5; 
+    /* gap:-10px; */
+    /* justify-content: space-between; */ 
+    padding-left: 10px;/*  height: 80px; */
 }
 
 /* Pour chaque <h3> : tailler la police & décaler vers le haut */
 .c_section-hebergements__div-description h3 {
     font-size: 16px; font-weight: bold;
-    margin-top: -5px;
+    /* margin-top: 8px; */ line-height: 0.1;
 }
 
 /* Pour chaque <p> : tailler la police & décaler vers le haut */
 .c_section-hebergements__div-description p {
-    font-size: 14px;
-    margin-top: -15px;
+    font-size: 14px; /* margin-top: -5px; */ line-height: 0.1;
+    /* margin-top: -15px; */ /* margin-bottom: 0px; */
 }
 
-/* Pour la balise <a> ("Afficher plus") : mettre en forme (taille de la police & gras) */
-.c_section-hebergements__a-afficher-plus {
-    font-size: 18px; font-weight: bold;
-}
-
-/*
-.c_bleu {
-    color:var(--couleur_bleu);
-    font-size: 12px;
-}
+/* Pour la balise <a> ("Afficher plus") : 
+    - mettre en forme (taille de la police & gras) 
+    - le placer à 40px des Articles
 */
-
-/* Couleurs & Forme (star) pour le picto évaluation */
-:root {
-    --picto-evaluation-couleur-ok: var(--couleur_bleu);    /* bien notée */
-    --picto-evaluation-couleur-ko: var(--couleur_gris);    /* mal notée */     
-    --picto-evaluation-symbole:      "\f005";                /* etoile */
-    /* --picto-evaluation-symbole:      "\f004";  */         /* coeur */
+.c_section-hebergements__a-afficher-plus {
+    font-size: 18px; font-weight: bold; 
+    margin-top: 40px; /* margin-bottom: 50px; */
 }
+
+/* .c_bleu { color:var(--couleur_bleu); font-size: 12px; } */
 
 .c_picto-evaluation--couleur-ok {
-    color:var(--picto-evaluation-couleur-ok);
+    color: var(--picto-evaluation-couleur-ok);
 }
 
 .c_picto-evaluation--couleur-ko {
-    color:var(--picto-evaluation-couleur-ko);
+    color: var(--picto-evaluation-couleur-ko);
 }
 
 /* Pour la section "hebergement" : mettre les pictos d'évaluation dans un symbole donné (eg. étoile) */
@@ -441,8 +406,8 @@ form{
 
 .c_section-hebergements__div-evaluation {
     display: flex;
-    /* padding-top: 5px; */
-    margin-top:-5px;
+    padding-top: 5px;
+    /* margin-top:-5px; */
 }
 
 /* Tailler les pictos d'evaluation */
@@ -452,30 +417,6 @@ form{
 
 /* <section> Hébergements Populaires ------------------------------------------------------------------------------------- */
 
-:root {
-    /* largeur de la section */
-    --section-hebergements-populaires_largeur: calc(1390px - 970px);                /* 420px */
-    /* largeur & hauteur d'un article */
-    --section-hebergements-populaires__article_largeur: calc(1350px - 1005px);      /* 345px */
-    --section-hebergements-populaires__article_hauteur: calc(665px - 520px);        /* 145px */
-    /* Largeur & hauteur d'une image */
-    --section-hebergements-populaires__article__img_largeur: calc(1140px - 1010px); /* 130 px */
-    --section-hebergements-populaires__article__img_hauteur: calc(660px - 525px);   /* 135px */
-
-    /* Radius */
-    --section-hebergements-populaires_radius: 20px;
-    --section-hebergements-populaires__article_radius: 20px;
-    --section-hebergements-populaires__article_img_radius: 15px;
-}
-
-/* Calculer les marges internes */
-:root {
-    --populaires_padding-haut: calc(475px - 430px);     /* 35px */
-    --populaires_padding-droit: calc(1385px - 1350px);  /* 35px */
-    --populaires_padding-bas: 0px;
-    --populaires_padding-gauche: calc(1005px - 970px);  /* 35px */
-}
-
 /* Pour la section "populaire" :
     - tailler la largeur
     - mettre le fond en gris
@@ -483,42 +424,39 @@ form{
     - définir les marges internes
 */
 .c_section-hebergements-populaires {
-    display: flex;
-    flex-direction: column;
-    
-    width: var(--section-hebergements-populaires_largeur);
+    display: flex; flex-direction: column;
+    /* width: 420px;  */     /* 1390px - 970px */ width: 33.33%; /* mentor */
  
     background-color: var(--couleur_gris);
-    border-radius: var(--section-hebergements-populaires_radius); /* 20px; */
+    border-radius: var(--hebergements-populaires_radius); /* 20px */
 
-    /* haut | droit | bas | gauche */
-    padding: var(--populaires_padding-haut) var(--populaires_padding-droit) 0px var(--populaires_padding-gauche);
+    /* haut ; droit ; bas ; gauche */
+    /* 45px (475px - 430px) ; 35px (1385px - 1350px) ; 0px ; 35px (1005px - 970px) */
+    padding: 20px 35px 0px 35px;
 }
 
 /* Pour <h2> : tailler la largeur (largeur de l'article) & la police */
 .c_section-hebergements-populaires h2 {
     display: flex; justify-content: space-between;
-    width: var(--section-hebergements-populaires__article_largeur);
+    width: var(--hebergements-populaires__article_largeur);
     font-size: 25px;
 }
 
 /* Mettre le picto associé au titre "Les plus populaires" en noir */
 .c_picto--couleur-noir { color: var(--couleur_noir);  }
 
-:root {
-    --populaires_row-gap: calc(695px - 665px); /* 30px */
-}
-
 /* Pour les articles :
     - Tailler la largeur 
     - Définir le row-gap
 */
-.c_section-hebergements-populaires__div {
-    display: flex;
-    flex-direction: column;
-    padding-top: 30px; /* background-color:green; */
-    width: var(--section-hebergements-populaires__article_largeur);
-    row-gap: var(--populaires_row-gap);
+.c_section-hebergements-populaires__div-les-articles {
+    background: green;
+    display: flex; flex-direction: column;
+ 
+    /* row-gap: 0px; */      /* 695px - 665px */
+
+   /* gap:0px; */ 
+   width: var(--hebergements-populaires__article_largeur);
 }
 
 /* Pour chaque article :
@@ -528,12 +466,12 @@ form{
     - arrondir les 4 angles
 */
 .c_section-hebergements-populaires__article {
-    height: var(--section-hebergements-populaires__article_hauteur);
-
+    height: 145px;      /* 665px - 520px */
+        /* width: var(--hebergements-populaires__article_largeur); */
     background-color: var(--couleur_blanc);
     border: 5px solid var(--couleur_blanc);
-    border-radius: var(--section-hebergements-populaires__article_radius); /* 20px; */
-    margin-bottom:25px; 
+    border-radius: var(--hebergements-populaires_radius); /* 20px; */
+    margin-bottom: 25px; 
 }
 
 /* Pour les <a> (i.e. enfants de chaque article) : disposer ses enfants en ligne */
@@ -547,8 +485,9 @@ form{
     - arrondir les 2 angles (haut & bas ; gauche)
 */
 .c_section-hebergements-populaires__article img {
-    width: var(--section-hebergements-populaires__article__img_largeur);
-    border-radius: var(--section-hebergements-populaires__article_img_radius) 0 0 var(--section-hebergements-populaires__article_img_radius);
+    width: 130px; /* 1140px - 1010px */
+    /* height: 135px; */ /* 660px - 525px */
+    border-radius: 15px 0 0 15px;
 }
 
 /* Pour les descriptions : disposer ses enfants en colonne
@@ -560,31 +499,30 @@ form{
     padding: 10px; 
 }
 
-/* Pour chaque <h3> : tailler la font & remonter de 5 px */
+/* Pour chaque <h3> : tailler la font & remonter de 5px */
 .c_section-hebergements-populaires__div-description h3 {
     font-size: 16px; font-weight: bold;
     margin-top: -5px;
 }
 
-/* Pour chaque <p> : tailler la font & remonter de 15 px */
+/* Pour chaque <p> : tailler la font & remonter de 40px */
 .c_section-hebergements-populaires__div-description p {
     font-size: 14px;
-    margin-top:-15px;
+    margin-top: -40px;
 }
 
 /* Pour chaque picto : tailler la font & remonter de 15 px */
 .c_section-hebergements-populaires__div-evaluation .fas {
     font-size: 10px;
-    margin-top:-15px;
+    margin-top: -15px;
 }
-
 
 /* Section ACTIVITES ------------------------------------------------------------------------------------- */
 .c_section-activites {
     padding-top: 50px;
 }
 
-.c_section-activites__div {
+.c_section-activites__div-les-articles {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;  
@@ -598,126 +536,110 @@ form{
 }
 
 /* TAILLE (Largeur & Hauteur) des ARTICLES & IMAGES -------------------------------------------------- */
-/* on calcule la largeur (en px) des 6 articles */
-:root {
-    --section-activites__article_largeur: calc(350px - 50px); /* 300px */
-}
 
-/* on taille la largeur (en px) des 6 articles */
+/* on taille la largeur (en px) des 6 articles & des 6 images */
 .c_section-activites__article-solo,
-.c_section-activites__article-duo { 
-    width: var(--section-activites__article_largeur); 
+.c_section-activites__article-duo,
+.c_section-activites__div-les-articles img { 
+    width: var(--activites__article_largeur); 
 }
 
-/* on calcule la largeur (en px) des 6 images */
-:root {
-    --section-activites__img_largeur: var(--section-activites__article_largeur); /* 300px */
-}
-
-/* on taille la largeur (en px) des 6 images */
-.c_section-activites__div img {
-    width: var(--section-activites__img_largeur);
-}
-
-/* on calcule la hauteur (en px) des 6 images */
-:root {
-    --section-activites__article-solo_img_hauteur: calc(1552px - 1162px); /* 390px; */
-    --section-activites__article-duo1_img_hauteur: calc(1342px - 1162px); /* 180px; */
-    --section-activites__article-duo2_img_hauteur: calc(1550px - 1440px); /* 110px; */
-    --section-activites__article-duo3_img_hauteur: calc(1300px - 1160px); /* 140px; */
-    --section-activites__article-duo4_img_hauteur: calc(1550px - 1395px); /* 155px; */
-}
 
 /* on taille la hauteur (en px) des 6 images */
 .c_section-activites__article-solo img {
-   height: var(--section-activites__article-solo_img_hauteur);
+   height: 390px; /* 1552px - 1162px */
 }
 
-.c_section-activites__article-duo1 img{  
-   height: var(--section-activites__article-duo1_img_hauteur);
+.c_section-activites__article-duo-gauche-haut img{  
+   height: 180px; /* 1342px - 1162px */
 }
 
-.c_section-activites__article-duo2 img{
-   height: var(--section-activites__article-duo2_img_hauteur);
+.c_section-activites__article-duo-gauche-bas img{
+    height: 110px; /* 1550px - 1440px */
 }
 
-.c_section-activites__article-duo3 img{
-   height: var(--section-activites__article-duo3_img_hauteur);
+.c_section-activites__article-duo-droit-haut img{
+   height: 140px; /* 1300px - 1160px */
 }
 
-.c_section-activites__article-duo4 img{
-   height: var(--section-activites__article-duo4_img_hauteur);
+.c_section-activites__article-duo-droit-bas img{
+   height: 155px; /* 1550px - 1395px */
 }
 
 /* RADIUS & OMBRE grise -------------------------------------------------- */
-:root {
-    --activite_radius: 25px;
-}
  
 /* Pour les 6 articles :
     - arrondir les 4 angles (haut & bas ; gauche & droite)
     - mettre 1 ombre grise
 */
 .c_section-activites__article-solo,
-.c_section-activites__article-duo1,
-.c_section-activites__article-duo2,
-.c_section-activites__article-duo3,
-.c_section-activites__article-duo4 {
+.c_section-activites__article-duo-gauche-haut,
+.c_section-activites__article-duo-gauche-bas,
+.c_section-activites__article-duo-droit-haut,
+.c_section-activites__article-duo-droit-bas {
     border-radius: var(--activite_radius);
     box-shadow: 10px 10px 20px var(--couleur_gris); /* décalage x (de l'ombre); décalage y (de l'ombre); épaisseur de l'ombre */
 }
  
-/* Pour chaque image : arrondir les angles haut (gauche & droite) */
-.c_section-activites__div img {
+/* Pour chaque image : 
+    - arrondir les angles haut (gauche & droite)
+*/
+.c_section-activites__div-les-articles img {
     border-radius: var(--activite_radius) var(--activite_radius) 0px 0px;
- }
+}
  
 /* Pour les titres <h2> & <h3> : tailler la font -------------------------------------------------- */
 .c_section-activites h2 {
-    font-size: 18px;
+    font-size: 25px;
 }
 
 /* Pour les <h3> : tailler la font & mettre marge gauche à 10 px */
-.c_section-activites__div h3 {
+.c_section-activites__div-les-articles h3 {
      font-size: 16px; font-weight: bold;
      padding-left: 10px;
- }
-
+}
 
 /* Footer ----------------------------------------------------------------------------------------------------------------------------- */
 
-footer{    
-    margin-top:          calc(1670px - 1600px);       /* marge extérieure Haut */
-    margin-left:         0px;
-    padding-top:         40px;                         /* marge intérieure haut */
+footer {    
+    margin-top: 70px;               /* 1670px - 1600px : marge extérieure Haut */
+    margin-left: 0px;
+    padding-top: 40px;              /* marge intérieure haut */
 
-    height:              calc(1880px - 1670px);
+   /* height: 210px; */             /* 1880px - 1670px */
 
-    display:             flex;
-    flex-direction:      row;            /* par défaut */
-    flex-wrap:           nowrap;         /* retour à la ligne NON autorisé */
-    justify-content:     flex-start;     /* ses 3 enfants sont placés au début */
+    display: flex;
+    flex-direction: row;            /* par défaut */
+    flex-wrap: nowrap;              /* retour à la ligne NON autorisé */
+    justify-content: flex-start;    /* ses 3 enfants sont placés au début */
 
-    background-color:    var(--couleur_gris); /* Fond gris */
+    background-color: var(--couleur_gris); /* Fond gris */
 }
 
 /* Ses 3 enfants ------------------------------------ */
 .c_footer__div-a-propos {
-    margin-left: var(--marge_ext_gauche); 
+    margin-left: var(--marge_ext_gauche-droite);
     display: flex;
     flex-direction: column; justify-content: flex-start;
 }
 
+/* Réduire la taille de l'espacement entre le titre et les liens */
+.c_footer__div-a-propos h2,
+.c_footer__div-nos-hebergements h2,
+.c_footer__div-assistance h2 {
+   margin-bottom:-5px;
+}
+
 .c_footer__div-nos-hebergements {    
-    margin-left: calc(500px - 280px);
+    margin-left: 220px;     /* 500px - 280px */
     display: flex;
     flex-direction: column; justify-content: flex-start;
 }
 
 .c_footer__div-assistance {   
-    margin-left: calc(960px - 660px);
+    margin-left: 300px; /* 960px - 660px */
     display: flex;
-    flex-direction: column; justify-content:flex-start;
+    flex-direction: column; justify-content: flex-start;
 }
 
 /* On met en forme <h2>, <li>, & <adress> ------ */
@@ -727,8 +649,8 @@ footer h2 {
 
 footer li {
     font-size: 16px; 
-    list-style: none;  /* on supprime les puces */
-    margin-left:-40px; /* on supprime le décalage */
+    list-style: none;       /* on supprime les puces */
+    margin-left: -40px;     /* on supprime le décalage */
 }
 
 /* Pour la balise <address> "Nous contacter" : passage d'italic (par défaut) à normal */
@@ -738,6 +660,208 @@ footer li {
 
 /* Au survol des éléments <a> du <footer> ------ */
 footer a:hover {
-    border-top-color:   transparent;            /*  Pas de ligne Bleu au dessus du lien */
-    color:              var(--couleur_bleu);    /* ligne Bleu au niveau du lien */
+    border-top-color: transparent;      /*  Pas de ligne Bleu au dessus du lien */
+    color: var(--couleur_bleu);         /* ligne Bleu au niveau du lien */
 }
+
+
+/* MEDIA QUERIES ------------------------------------------------------------------------------------------ */
+/* NB: Pour tester le site sur une TABLETTE ou un TELEPHONE : 
+    - redimensionner la fenêtre du navigateur
+    - utiliser la fonctionn "inspecter" de Chrome 
+    - Il ne doit pas avoir de scrollbar horizontal.
+*/
+
+/* @media TABLETTE ----------------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 991px) { 
+/* Pas de maquette ! */
+    
+}
+/* fin de @media TABLETTE */
+
+/* @media TELEPHONE ---------------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+
+/* NAV : Logo & 2 Liens ---------------------------------------------------------------------------- */
+
+/* Pour le "c_nav" : 
+    - placer en colonne ses enfants (i.e. le logo & ses 2 liens) 
+    - les centrer.
+*/
+.c_nav {
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* Pour les 2 liens de la nav :
+    - tailler sa largeur sur 100%
+    - placer au centre ses 2 liens
+    - mettre les marges externes Gauche & Droite à 0
+*/
+.c_nav__div-liens {
+    width: 100%;
+    display: flex; flex-direction: row; text-align: center;
+    margin-left: 0px; margin-right: 0px;
+}
+
+/* Pour chaque <a> de "c_nav__div-liens" : 
+    - tailler sa largeur sur 50%
+    - placer une bordure de couleur gris (en bas de 15px) */
+.c_nav__div-liens a {
+    width: 50%;
+    border-bottom: 2px solid var(--couleur_gris);
+    padding: 15px; /* 130px - 115px */
+}
+
+/* Au survol des 2 liens :
+    - oter la bordure haute
+    - placer une bordure (en bas) de couleur bleu
+*/
+.c_nav__div-liens a:hover {     
+    border-top: none;
+    border-bottom: 2px solid var(--couleur_bleu);
+}
+
+/* Header : <h1> & <p> & <form> ---------------------------------------------------------------- */
+/* Pour le header : cacher son <h1> ordinateur & afficher son <h1> responsive */
+.c_h1 { display: none; }
+.c_h1-responsive { display: flex; font-size: 20px; }
+
+/* Cacher le button "rechercher" ordinateur */
+.c_form__button-rechercher { display: none; }
+
+/* Créer & afficher le button "rechercher" responsive */
+.c_form__button-rechercher-responsive {
+    display: flex;
+    justify-content: center;                              /* Pour que le picto se mette au centre sur l'axe X */
+    align-items: center;                                  /* Pour que le picto se mette au centre sur l'axe Y */
+
+    border-radius: var(--formulaire_radius);    /* arrondir les 4 angles */
+    border-style: none;                         /* oter la bordure */
+
+    background: var(--couleur_bleu);
+    color: var(--couleur_blanc); font-size: 18px;
+
+    width: var(--formulaire_hauteur);
+    
+    margin-left: -10px; /* décaler à gauche */
+
+    cursor: pointer;
+}
+
+/* Pour le header (i.e. <h1>, <p> & <form>) : mettre la marge gauche à 20px */
+header { 
+    margin-left: 20px;
+}
+
+/* <section> Filtre -------------------------------------------------------------- */
+/* Pour la section "filtre" & c_div-infos : mettre la marge gauche à 20px */
+.c_section-filtre, .c_div-infos { 
+    margin-left: 20px;
+}
+
+/* Décaler à gauche les enfants de la section filtre */
+.c_section-filtre ul { margin-left: -40px; margin-top: 0px; }
+
+
+/* Section HEBERGEMENTS --------------------------------------------------------------------------- */
+
+/* Pour la section "hébergements" : 
+    - renverser ses enfants (i.e. ses articles) => de la section "populaires" à la section "hébergements" 
+    - poser un gap de 40px
+*/
+.c_section-hebergements {    
+    flex-direction: column-reverse;
+    gap: 40px; /* 1300px - 1260px */
+}
+
+/* Pour la section "populaires" :
+    - tailler sa largeur sur 100%
+    - oter l'arrondissement des 4 angles */
+.c_section-hebergements-populaires {
+    width: 100%;
+    background-color: pink;
+    border-radius: 0px;
+    padding: 0;
+}
+
+/* Pour chaque Article : 
+    - tailler sa largeur sur 100% 
+    - poser un gap de 10px    
+*/ 
+.c_section-hebergements-populaires__article {
+    width: 100%;
+    gap: 10px; /* 930px - 920px */
+}
+
+/* Pour la section "c_section-hebergements" :
+    - tailler sa largeur sur 100%
+    - oter l'arrondissement des 4 angles
+    - mettre le fond en blanc 
+*/    
+.c_section-hebergements__div-h-et-les-articles-et-a {
+    width: 100%;
+    border-radius: 0px;
+    background-color: var(--couleur_blanc);
+    padding: 0;
+}
+
+/* Pour chaque Article : poser un gap de 10px */
+.c_section-hebergements__div-les-articles {
+    gap: 10px; /* 2400px - 2390px */
+}
+
+/* Pour chaque Article : tailler sa largeur sur 100% */    
+.c_section-hebergements__article {
+    width: 100%;
+}
+
+/* Section ACTIVITES ------------------------------------------------------------------------------------- */
+
+/* Pour la section "Activités" : 
+    - placer ses enfants (ie ses Articles) en colonne 
+    - avec un gap de 25px
+*/    
+.c_section-activites__div-les-articles {
+    display: flex; flex-direction: column; 
+    gap: 25px; /* 2975px - 2950px */
+}
+
+/* Pour chaque Article : tailler sa largeur sur 100% */      
+.c_section-activites__article-solo, .c_section-activites__article-duo {    
+   width: 100%;
+}
+
+/* Pour chaque Article duo : poser un gap de 20px */
+.c_section-activites__article-duo {    
+    gap: 20px; /* 3185px - 3165px */
+}
+
+/* Pour chaque <img> :
+    - tailler sa largeur sur 100%
+    - tailler sa hauteur sur 135px
+*/
+.c_section-activites__article-solo img, .c_section-activites__article-duo img {
+    width: 100%;
+    height: 135px; /* 2895px - 2760px */
+}
+
+/* Footer ------------------------------------------------------------------------- */
+:root { --marge_ext_gauche-droite: 0px; }
+
+/* Pour le <footer> :
+    - placer ses enfants en colonne
+    - poser un gap de 50px
+    - poser une marge interne gauche de 30px
+*/
+footer {
+    display: flex; flex-direction: column;
+    gap: 50px;  /* 4275px - 4225px */
+    padding-left: 30px;
+}
+
+/* Pour chaque enfant du <footer> : poser une marge externe gauche à 0 */
+.c_footer__div-a-propos, .c_footer__div-nos-hebergements, .c_footer__div-assistance {
+    margin-left: var(--marge_ext_gauche-droite);
+}
+
+} /* fin de @media TELEPHONE */
