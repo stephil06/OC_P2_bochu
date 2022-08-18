@@ -1,111 +1,165 @@
 /* Déclaration des variables -----------------------------------------------------------------------  */
 :root {
-    /* Couleurs (de la charte) */
-    --couleur_bleu: #0065FC;            /* charte couleur Bleu */
-    --couleur_bleu_clair: #DEEBFF;      /* charte bleu + clair */
-    --couleur_gris: #F2F2F2;            /* charte couleur Gris */
-    --couleur_noir: #000000;            /* couleurs (implicites de la charte) : Noir & Blanc */
-    --couleur_blanc:#FFFFFF;    
+    /* Couleurs (de la charte) ------------------------------------------------------------------ */
+    --couleur_bleu: #0065FC;
+    /* charte couleur Bleu */
+    --couleur_bleu_clair: #DEEBFF;
+    /* charte bleu + clair */
+    --couleur_gris: #F2F2F2;
+    /* charte couleur Gris */
+    --couleur_noir: #000000;
+    /* couleurs (implicites de la charte) : Noir & Blanc */
+    --couleur_blanc: #FFFFFF;
 
-    --marge_ext_gauche-droite: 50px;     /* (1440px - 1390px) : marge externe Gauche ou Droite */
+    --marge_ext_gauche-droite: 50px;
+    /* (1440px - 1390px) : marge externe Gauche ou Droite */
 
-    --formulaire_hauteur: 50px;         /* hauteur du formulaire & largeur du "Picto de localisation" */
-    --formulaire_radius: 15px;          /* radius pour les élements du formulaire "Picto de localisation" & Button "rechercher" */
+    --formulaire_hauteur: 50px;
+    /* hauteur du formulaire & largeur du "Picto de localisation" */
+    --formulaire_radius: 15px;
+    /* radius pour les élements du formulaire "Picto de localisation" & Button "rechercher" */
 
+    /* Hébergements ---------------------------------------------------------------------------- */
     /* Concernant les "hébergements", Radius de la section, d'un article & d'une image */
-    --hebergements_radius : 20px;
+    --hebergements_radius: 20px;
 
     /* Concernant les "Hébergements Populaires", largeur d'un article & du <h2> */
-    --hebergements-populaires__article_largeur: 345px; /* 1350px - 1005px */
+    --hebergements-populaires__article_largeur: 380px; /* 345px; */
+    /* 1350px - 1005px */
     /* Concernant les "Hébergements Populaires", Radius de la section & des articles */
     --hebergements-populaires_radius: 20px;
- 
+
+    /* Activités ------------------------------------------------------------------------------- */
     /* Concernant les "activités", Largeur d'un Article & d'une Image */
-    --activites__article_largeur: 300px; /* 350px - 50px */
+    --activites__article_largeur: 300px;
+    /* 350px - 50px */
     /* Concernant les "activités", Radius d'un Article & d'une Image */
     --activite_radius: 20px;
 
+    /* Picto évaluation ----------------------------------------------------------------------- */
     /* Concernant le picto évaluation : Couleurs & Forme ("étoile par défaut) */
-    --picto-evaluation-couleur-ok: var(--couleur_bleu);     /* bien notée */
-    --picto-evaluation-couleur-ko: var(--couleur_gris);     /* mal notée */     
-    --picto-evaluation-symbole: "\f005";                    /* etoile */
-    /* --picto-evaluation-symbole: "\f004";  */             /* coeur */
+    --picto-evaluation-couleur-ok: var(--couleur_bleu);
+    /* bien notée */
+    --picto-evaluation-couleur-ko: var(--couleur_gris);
+    /* mal notée */
+    --picto-evaluation-symbole: "\f005";
+    /* etoile */
+    /* --picto-evaluation-symbole: "\f004";  */
+    /* coeur */
 }
+
+/* COMPATIBILITE AVEC LES NAVIGATEURS FireFox & Chrome ---------------------------------------------------------------- */
+
+/* Pour garantir la compatibilité avec les navigateurs (dernière version) :
+    - FireFox  (103.0.2) 
+    - Chrome (104.0.5112.102)
+*/
+
+/* Problème : au niveau du placeholder (la croix n'est pas visible sur FireFox) */
+
+/* Mozilla Firefox */
+::-moz-placeholder { 
+    color: green;  text-align: center;
+}
+
+/* WebKit (i.e. Chrome & Safari) */
+::-webkit-input-placeholder { 
+    color: yellow;
+}
+
 
 /* ORDINATEUR---------------------------------------------------------------------------------------- */
 
 /* Cacher les éléments responsive ---------------------------------------------- */
 /* Cacher le Button "rechercher" responsive  & <h1> (du <header>) responsive */
-.c_form__button-rechercher-responsive, .c_h1-responsive { display: none; }
+.c_form__button-rechercher-responsive,
+.c_h1-responsive {
+    display: none;
+}
 
-/* Pour toutes les images : 
+/* Pour toutes les images, à l'exclusion de l'image Logo (i.e. de classe "c_nav__img-logo-booki") : 
     adapter ses dimensions à son conteneur (couvrir la totalité du conteneur en gardant les proportions de l'image) 
+NB: - not() doit être collé au sélecteur "img" (pas d'espace autorisé)
+    - pour exclure d'autres images ajouter :not(.nom_classe) eg. img:not(.c_nav__img-logo-booki):not(.nom_classe)
+    - plus besoin de faire : .c_nav__img-logo-booki { object-fit: inherit; }
 */
-img { object-fit: cover; }
-
-/* Pour l'image Logo : oter cette propriété de "cover" */
-.c_nav__img-logo-booki { object-fit: inherit; }
+img:not(.c_nav__img-logo-booki) {
+    object-fit: cover; 
+    /* border-top: 3px solid yellow; */
+}
 
 /* Pour tous les Liens <a> : supprimer la couleur bleu & le soulignement (par défaut) */
 a {
     color: inherit;
-    text-decoration: none; /* spécifier les décorations linéaires d'un mot eg. si le mot est souligné  */
+    text-decoration: none;
 }
 
 /* Pour le <main> (i.e. entre le <header> & le <footer>) : poser les marges externes */
 main {
-    margin: 0 var(--marge_ext_gauche-droite); /* marges externes : 0 pour les côtés haut et bas ; 50px pour les côtés gauche et droit */
+    margin: 0 var(--marge_ext_gauche-droite);
+    /* marges externes : 0 pour les côtés haut et bas ; 50px pour les côtés gauche et droit */
 }
 
-/* demande de mon mentor */
 body {
-    max-width: 1920px; 
-    margin-left: auto; margin-right :auto;
+    max-width: 1920px; /* Largeur de mon écran PC : 1920px */
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 /* NAV : Logo & 2 Liens ----------------------------------------------------------------------- */
 
-/* Balise NAV */
+/* Placer la nav "c_nav" : 
+    - avec une marge externe droite à 75px (1440px - 1365px)
+    - marge externe haute de 35px   
+*/
 .c_nav {
-    padding-top: 50px;
-    display: flex;             
-    flex-direction: row;        /* pour que les élements de nav se placent par défaut côte à côte */
-    justify-content: space-between; 
-    flex-wrap: wrap;            /* les éléments vont à la ligne lorsqu'il n'y a plus la place */
-}
-
-.c_nav__div-liens {
     display: flex; flex-direction: row;
-    justify-content: space-between; 
-    width: 240px; /* 1360px - 1120px */ 
-    margin: 10px; margin-right: 80px;
+    justify-content: space-between; /* pour que les élements de nav (i.e. Logo & les 2 liens) se placent aux extémités 
+                                        sans marge externe */
+    align-items: center;            /* on centre par rapport au 2ème axe (i.e. l'axe vertical) */
+
+    margin-right: 75px;
+    margin-top: 35px;
 }
 
-/* Placer le logo & tailler son image  */
-.c_nav__img-logo-booki {
-     margin-left: 50px;
-     height: 50px;  /* 90px - 40px */
-     width: 80px;   /* 140px - 60px */
- }
-
-/* au survol des éléments <a> de "c_nav__div-liens" */
+/* Pour chaque lien <a> : poser une marge interne gauche & droite de 32.5px (car la marge entre les 2 <a> = 65px) */
+.c_nav__div-liens a {
+    padding-left: 32.5px; padding-right: 32.5px;
+}
+ 
+/* Au survol des liens <a> de "c_nav__div-liens" :
+    - mettre le lien en bleu
+    - mettre la bordure en bleu, avec une marge interne haute de 50px
+    (la bordure sera allongée des padding-left & right posés précédemment)
+*/
 .c_nav__div-liens a:hover {
-    /* padding: 10px; */
-    border-top-color: var(--couleur_bleu);      /* au survol, ligne Bleu au dessus du lien (cf. capture-écran de la maquette) */
-    color: var(--couleur_bleu);                 /* au survol, ligne Bleu au niveau du lien */
-    border-top: 2px solid var(--couleur_bleu);
+    color: var(--couleur_bleu);
+    border-top: 3px solid var(--couleur_bleu); 
+    padding-top: 50px;
 }
+
+/* Placer le logo & tailler son image */
+.c_nav__img-logo-booki {
+    margin-left: 60px;
+    height: 50px;   /* 90px - 40px */
+    width: 80px;   /* 140px - 60px */
+}
+
+/* fin de NAV : Logo & 2 Liens ----------------------------------------------------------------------- */
 
 /* Header ------------------------------------------------------------------------------------ */
 
 header {
     margin-left: var(--marge_ext_gauche-droite);
-    margin-top: 0px;        /* taille de la marge externe */
-    padding: 0px;           /* taille de la marge interne */
+    margin-top: 0;
+    /* taille de la marge externe */
+    padding: 0;
+    /* taille de la marge interne */
 
-    display: flex; flex-direction: column;
-    flex-wrap: wrap;        /* retour à la ligne autorisée (cf. maquette mobile) */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* retour à la ligne autorisée (cf. maquette mobile) */
     justify-content: space-between;
 }
 
@@ -114,59 +168,78 @@ header h1 {
     font-size: 20px;
     margin-top: 25px;
 }
-  
+
 header p {
     font-size: 15px;
     margin-top: -5px;
 }
-  
-/* le Formulaire & ses 3 éléments  ------------------------------------------------------------------- */ 
-form{
-    height: var(--formulaire_hauteur); /* 50px  => height(Label, Input & Button) = 50 px */
+
+/* le Formulaire & ses 3 éléments  ------------------------------------------------------------------- */
+form {
+    height: var(--formulaire_hauteur);
+    /* 50px  => height(Label, Input & Button) = 50 px */
     display: flex;
 }
-  
-  /* 1e élément : Picto de localisation --------------------------- */
-  /* Un carré fond gris aux bords gauche haut & bas arrondis */
-  .c_form__label-picto-local{
-      background-color: var(--couleur_gris);                /* Fond en Gris */
-      width: var(--formulaire_hauteur);                 
-      border-top-left-radius: var(--formulaire_radius);      /* radius gauche haut */
-      border-bottom-left-radius: var(--formulaire_radius);   /* radius gauche bas */
-      display: flex;
-      justify-content: center;                              /* Pour que le picto se mette au centre sur l'axe X */
-      align-items: center;                                  /* Pour que le picto se mette au centre sur l'axe Y */
-  }
-  
-  /* 2e élément : input-search ------------------------------------ */
-  .c_form__input-search {
-    border: solid var(--couleur_gris);      /* Bordure en Gris */
-    text-align: left;                       /* Texte à gauche */
-    font-weight: bold;                      /* Texte mis en gras */
-    width: 230px;                           /* 340px - 110px */
-  }
-  
-  /* 3e élément : Button "rechercher" ------------------------------ */
-  /* aux Bords à droite haut & bas arrondis */
-  .c_form__button-rechercher{
-      background-color: var(--couleur_bleu);                /* Fond en Bleu */
-      color: var(--couleur_blanc);                          /* Texte en Blanc */
-      border: none;
-      border-top-right-radius: var(--formulaire_radius);     /* radius à droite haut */
-      border-bottom-right-radius: var(--formulaire_radius);  /* radius à droite bas */
-      font-weight: bold;                                    /* mettre en gras */ 
-      width: 130px;                                         /* 470px - 340px */
-      cursor: pointer;                                      /* on représente le curseur par "une main" */
-    }
+
+/* 1e élément : Picto de localisation --------------------------- */
+/* Un carré fond gris aux bords gauche haut & bas arrondis */
+.c_form__label-picto-local {
+    background-color: var(--couleur_gris);
+    /* Fond en Gris */
+    width: var(--formulaire_hauteur);
+    border-top-left-radius: var(--formulaire_radius);
+    /* radius gauche haut */
+    border-bottom-left-radius: var(--formulaire_radius);
+    /* radius gauche bas */
+    display: flex;
+    justify-content: center;
+    /* Pour que le picto se mette au centre sur l'axe X */
+    align-items: center;
+    /* Pour que le picto se mette au centre sur l'axe Y */
+}
+
+/* 2e élément : input-search ------------------------------------ */
+.c_form__input-search {
+    border: solid var(--couleur_gris);
+    /* Bordure en Gris */
+    text-align: left;
+    /* Texte à gauche */
+    font-weight: bold;
+    /* Texte mis en gras */
+    width: 230px;
+    /* 340px - 110px */
+}
+
+/* 3e élément : Button "rechercher" ------------------------------ */
+/* aux Bords à droite haut & bas arrondis */
+.c_form__button-rechercher {
+    background-color: var(--couleur_bleu);
+    /* Fond en Bleu */
+    color: var(--couleur_blanc);
+    /* Texte en Blanc */
+    border: none;
+    border-top-right-radius: var(--formulaire_radius);
+    /* radius à droite haut */
+    border-bottom-right-radius: var(--formulaire_radius);
+    /* radius à droite bas */
+    font-weight: bold;
+    /* mettre en gras */
+    width: 130px;
+    /* 470px - 340px */
+    cursor: pointer;
+    /* on représente le curseur par "une main" */
+}
 
 /* Section "Filtres" & ses 4 Filtres  ------------------------------------------------------------------------- */
-  
+
 .c_section-filtre {
     display: flex;
-    flex-wrap:wrap;     /* ses éléments peuvent être affichés sur plusieurs lignes (cf. maquette mobile) */
+    flex-wrap: wrap;
+    /* ses éléments peuvent être affichés sur plusieurs lignes (cf. maquette mobile) */
     align-items: center;
 
-    margin-top: 20px;   /* à placer en marge haute par rapport au Formulaire */
+    margin-top: 20px;
+    /* à placer en marge haute par rapport au Formulaire */
 }
 
 .c_section-filtre h2 {
@@ -176,8 +249,9 @@ form{
 
 .c_section-filtre ul {
     display: flex;
-    flex-wrap: wrap; 
-    gap: 25px;          /* (365px - 340px) : espace entre ses éléments-enfants Rectangle (<li>) */
+    flex-wrap: wrap;
+    gap: 25px;
+    /* (365px - 340px) : espace entre ses éléments-enfants Rectangle (<li>) */
 }
 
 /* on fait le Rectangle gris (avec sa courbure) 
@@ -186,39 +260,54 @@ form{
 .c_section-filtre li {
     display: flex;
     align-items: center;
-    
-    border: 4px solid var(--couleur_gris);      /* bordure */
-    border-radius: 25px;                        /* courbure du rectangle */
-    cursor: pointer;                            /* Le curseur est "une main" */
+
+    border: 4px solid var(--couleur_gris);
+    /* bordure */
+    border-radius: 25px;
+    /* courbure du rectangle */
+    cursor: pointer;
+    /* Le curseur est "une main" */
 }
 
 /* on fait le cercle bleu-clair */
 .c_section-filtre__li--cercle-bleu {
-    width:  50px;           /* 330px - 280px */   
-    height: 50px;           /* 330px - 280px */
+    width: 50px;
+    /* 330px - 280px */
+    height: 50px;
+    /* 330px - 280px */
     border-radius: 50%;
     background-color: var(--couleur_bleu_clair);
 
     text-align: center;
-    line-height: 3;         /* facteur multiplicateur de la taille de la police appliquée à l'élément Picto */
-    margin-left:-10px;      /* décaler à gauche le cercle (de 10px) par rapport à son frère "rectangle" */
+    line-height: 3;
+    /* facteur multiplicateur de la taille de la police appliquée à l'élément Picto */
+    margin-left: -10px;
+    /* décaler à gauche le cercle (de 10px) par rapport à son frère "rectangle" */
 }
 
-.c_section-filtre span {    
-    font-size: 17px; font-weight: bold;
-    padding-left: 20px; padding-right: 20px; /* on étend les marges */
+.c_section-filtre span {
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    /* on étend les marges */
 }
 
 /* Mettre les 4 picto en Bleu */
-.fa-money-bill-wave, .fa-child, .fa-heart, .fa-dog {
+.fa-money-bill-wave,
+.fa-child,
+.fa-heart,
+.fa-dog {
     color: var(--couleur_bleu);
 }
 
 /* au survol des 4 filtres, changement d'apparence  */
 .c_section-filtre li:hover {
     /* Choix arbitraire : pas présicé dans les Specs */
-    background-color: var(--couleur_gris);  /* le fond passe en Gris  */
-    color: var(--couleur_bleu);             /* Le texte passe en Bleu */
+    background-color: var(--couleur_gris);
+    /* le fond passe en Gris  */
+    color: var(--couleur_bleu);
+    /* Le texte passe en Bleu */
 }
 
 /* Informations ------------------------------------------------------------ */
@@ -229,7 +318,7 @@ form{
 }
 
 .c_div-infos--placer {
-    margin-left: 0px; 
+    margin-left: 0px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -242,36 +331,42 @@ form{
 }
 */
 
+/* Mettre le Picto en Bleu */
 .c_div-infos__i--bleu {
-    color: var(--couleur_bleu);    /* Picto en Bleu */
+    color: var(--couleur_bleu);
 }
 
+/* Tailler le Picto */
 .c_div-infos__i--taille {
     font-size: 10px;
 }
 
-/* Faire un cercle gris de diamètre 20px, avec placement au centre du picto  */
+/* faire un cercle gris de diamètre 20px, avec placement au centre du picto */
 .c_div-infos__i--cercle-gris {
     display: flex;
-    align-items: center; /* pour centrer le picto */
+    align-items: center;
     justify-content: center;
-    border-radius: 50%;    /* cercle */
+    /* pour centrer le picto */
+    border-radius: 50%;
+    /* cercle */
     /* diametre du cercle */
-    width: 20px;                /* 385px - 365px */
-    height: 20px;               /* 385px - 365px */
-    border: 3px solid var(--couleur_gris);  /* Bordure du Picto en Gris */
+    width: 20px;
+    /* 385px - 365px */
+    height: 20px;
+    /* 385px - 365px */
+    border: 3px solid var(--couleur_gris);
+    /* Bordure du Picto en Gris */
 }
 
-/* Pour <p>, on ajuste font-size & on le place par rapport au picto */
+/* Pour <p> : on ajuste font-size & on le place par rapport au picto */
 /*
 .c_div-infos p {
     font-size: 16px;
     margin-left: 10px;
 }*/
-
 .c_div-infos__p--taille {
     font-size: 16px;
-} 
+}
 
 .c_div-infos__p--placer {
     margin-left: 10px;
@@ -280,14 +375,16 @@ form{
 
 /* <section> HEBERGEMENTS -------------------------------------------------------------------------------------- */
 
-/* on définit le gap (entre les sections "hébergements & "populaires") */
+/* on définit le gap (40px) (entre les sections "hébergements & "populaires") */
 .c_section-hebergements {
-   /* margin-top: 0px; */ /* 40px; */ /* 425px - 385px */
-    display: flex; flex-direction: row;
-    gap: 40px; /* 970px - 930px */
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    /* 970px - 930px */
 }
 
-/* Pour la section "hébergement" : 
+/* Pour la section "hébergement" :
+    - on place ses enfants (i.e. <h> & ses Articles) en Colonne
     - on définit la largeur
     - on met le fond en gris
     - on arrondit les 4 angles
@@ -298,16 +395,17 @@ form{
     flex-direction: column;
     flex-wrap: wrap;
 
-    /* width: 880px; */ /* 930px - 50px */ width: 66.67%; /* mentor */
+    /* width: 880px; */
+    /* 930px - 50px */
+    width: 66.67%;
+    /* on taille la largeur à 2/3 par rapport à la largeur "populaire" 1/3  */
 
     background-color: var(--couleur_gris);
     border-radius: var(--hebergements_radius);
 
-   /* haut ; droit ; bas ; gauche */
-   /* 45px (475px - 430px) ; 40px (930px - 890px) ; 0px ; 40px (90px - 50px) */
-   padding: 20px 40px 0px 40px;
-   /* padding: 45px 40px 0px 40px; */
-
+    /* haut ; droit ; bas ; gauche */
+    /* 45px (475px - 430px) ; 40px (930px - 890px) ; 0px ; 40px (90px - 50px) */
+    padding: 20px 40px 0px 40px;
 }
 
 /* On taille le <h2> */
@@ -315,13 +413,16 @@ form{
     font-size: 25px;
 }
 
-/* On définit le gap (horizontal & vertical) entre les articles */
+/*  - on place ses enfants (i.e. ses Articles) en Ligne
+    - on définit le gap (horizontal & vertical) entre les articles 
+*/
 .c_section-hebergements__div-les-articles {
-    background:green;
-    display:flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start;
-    gap: 30px;     /* 367px - 337px */ 
-   /*  padding-top: 10px; */ /* 30px; */          /* 367px - 337px */
-   /*  padding-bottom: 60px; */ 
+    background: var(--couleur_gris); /* green; */ /* TEST */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 30px;
 }
 
 /* Pour chaque article, 
@@ -331,14 +432,15 @@ form{
     - on crée une bordure en blanc
 */
 .c_section-hebergements__article {
-    width: 245px; /* 335px - 90px */
-    height: 200px; /* 717px - 517px */
+    width: 245px; /* 245px; */
+    /* 335px - 90px */
+    height: 200px;
+    /* 717px - 517px */
 
     background-color: var(--couleur_blanc);
     border-radius: var(--hebergements_radius);
     border: 4px solid var(--couleur_blanc);
     line-height: 1.5;
-    /* margin-bottom: 50px; */
 }
 
 /* Pour chaque image :
@@ -347,8 +449,11 @@ form{
     - on arrondit les 2 angles du haut
 */
 .c_section-hebergements__article img {
-    width: 100%;        /* 235px; */ /* 330px - 95px  */
-    height: 110px;      /* 635px - 525px */
+    width: 100%;
+    /* 235px; */
+    /* 330px - 95px  */
+    height: 110px;
+    /* 635px - 525px */
     border-radius: var(--hebergements_radius) var(--hebergements_radius) 0 0;
 }
 
@@ -356,23 +461,25 @@ form{
     - on place ses enfants en colonne (i.e. <h3>, <p> & ses pictos "évaluation")
     - on décale à gauche de 10px */
 .c_section-hebergements__div-description {
-    display: flex; flex-direction: column;
-    /* background-color: pink; */ line-height: 0.5; 
-    /* gap:-10px; */
-    /* justify-content: space-between; */ 
-    padding-left: 10px;/*  height: 80px; */
+    display: flex;
+    flex-direction: column;
+    line-height: 0.5;
+    padding-left: 10px;
 }
 
 /* Pour chaque <h3> : tailler la police & décaler vers le haut */
 .c_section-hebergements__div-description h3 {
-    font-size: 16px; font-weight: bold;
-    /* margin-top: 8px; */ line-height: 0.1;
+    font-size: 16px;
+    font-weight: bold;
+    /* margin-top: 8px; */
+    line-height: 0.1;
 }
 
 /* Pour chaque <p> : tailler la police & décaler vers le haut */
 .c_section-hebergements__div-description p {
-    font-size: 14px; /* margin-top: -5px; */ line-height: 0.1;
-    /* margin-top: -15px; */ /* margin-bottom: 0px; */
+    font-size: 14px;
+    /* margin-top: -5px; */
+    line-height: 0.1;
 }
 
 /* Pour la balise <a> ("Afficher plus") : 
@@ -380,10 +487,12 @@ form{
     - le placer à 40px des Articles
 */
 .c_section-hebergements__a-afficher-plus {
-    font-size: 18px; font-weight: bold; 
-    margin-top: 40px; /* margin-bottom: 50px; */
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
 }
 
+/* Pictos d'évaluation --------------------------------------------------------------------------------- */
 /* .c_bleu { color:var(--couleur_bleu); font-size: 12px; } */
 
 .c_picto-evaluation--couleur-ok {
@@ -399,15 +508,14 @@ form{
     content: var(--picto-evaluation-symbole);
 }
 
-/* Pour la section "populaire" : mettre les pictos d'évaluation dans un symbole donné (eg. étoile) */ 
- .c_section-hebergements-populaires .fa-star::before {
+/* Pour la section "populaire" : mettre les pictos d'évaluation dans un symbole donné (eg. étoile) */
+.c_section-hebergements-populaires .fa-star::before {
     content: var(--picto-evaluation-symbole);
 }
 
 .c_section-hebergements__div-evaluation {
     display: flex;
     padding-top: 5px;
-    /* margin-top:-5px; */
 }
 
 /* Tailler les pictos d'evaluation */
@@ -424,11 +532,16 @@ form{
     - définir les marges internes
 */
 .c_section-hebergements-populaires {
-    display: flex; flex-direction: column;
-    /* width: 420px;  */     /* 1390px - 970px */ width: 33.33%; /* mentor */
- 
+    display: flex;
+    flex-direction: column;
+    /* width: 420px;  */
+    /* 1390px - 970px */
+    width: 33.33%;      /* rapport 1/3 ; (et 2/3 pour la section "hébergements") */
+    min-width: 300px;   /* TRES IMPORTANT : Largeur mini pour ne pas avoir de problème de "coupure" dans la Description des Articles */
+    
     background-color: var(--couleur_gris);
-    border-radius: var(--hebergements-populaires_radius); /* 20px */
+    border-radius: var(--hebergements-populaires_radius);
+    /* 20px */
 
     /* haut ; droit ; bas ; gauche */
     /* 45px (475px - 430px) ; 35px (1385px - 1350px) ; 0px ; 35px (1005px - 970px) */
@@ -437,26 +550,25 @@ form{
 
 /* Pour <h2> : tailler la largeur (largeur de l'article) & la police */
 .c_section-hebergements-populaires h2 {
-    display: flex; justify-content: space-between;
-    width: var(--hebergements-populaires__article_largeur);
+    display: flex;
+    justify-content: space-between;
     font-size: 25px;
 }
 
 /* Mettre le picto associé au titre "Les plus populaires" en noir */
-.c_picto--couleur-noir { color: var(--couleur_noir);  }
+.c_picto--couleur-noir {
+    color: var(--couleur_noir);
+}
 
 /* Pour les articles :
-    - Tailler la largeur 
-    - Définir le row-gap
+    - les placer en colonne
+    - [Tailler la largeur Si on ne veut pas d'élasticité sur la largeur de chaque Article] (option)
 */
 .c_section-hebergements-populaires__div-les-articles {
-    background: green;
-    display: flex; flex-direction: column;
- 
-    /* row-gap: 0px; */      /* 695px - 665px */
-
-   /* gap:0px; */ 
-   width: var(--hebergements-populaires__article_largeur);
+    background: var(--couleur_gris); /* green; TEST */
+    display: flex;
+    flex-direction: column;
+    /* width: var(--hebergements-populaires__article_largeur); Si on ne veut pas d'élasticité sur la largeur */            
 }
 
 /* Pour chaque article :
@@ -466,17 +578,19 @@ form{
     - arrondir les 4 angles
 */
 .c_section-hebergements-populaires__article {
-    height: 145px;      /* 665px - 520px */
-        /* width: var(--hebergements-populaires__article_largeur); */
+    height: 145px;
+    /* 665px - 520px */
     background-color: var(--couleur_blanc);
     border: 5px solid var(--couleur_blanc);
-    border-radius: var(--hebergements-populaires_radius); /* 20px; */
-    margin-bottom: 25px; 
+    border-radius: var(--hebergements-populaires_radius);
+    /* 20px; */
+    margin-bottom: 25px;
 }
 
-/* Pour les <a> (i.e. enfants de chaque article) : disposer ses enfants en ligne */
+/* Pour les <a> (i.e. enfants de chaque article) : disposer ses enfants (i.e Photo & Description) en ligne */
 .c_section-hebergements-populaires__article a {
-    display: flex; flex-direction: row;
+    display: flex;
+    flex-direction: row;
     height: 100%;
 }
 
@@ -485,23 +599,26 @@ form{
     - arrondir les 2 angles (haut & bas ; gauche)
 */
 .c_section-hebergements-populaires__article img {
-    width: 130px; /* 1140px - 1010px */
-    /* height: 135px; */ /* 660px - 525px */
+    width: 130px;
+    /* 1140px - 1010px */
+    /* height: 135px; */
+    /* 660px - 525px */
     border-radius: 15px 0 0 15px;
 }
 
-/* Pour les descriptions : disposer ses enfants en colonne
+/* Pour les descriptions : disposer ses enfants (i.e. <h3>, <p> & Picto évaluation) en colonne
 */
 .c_section-hebergements-populaires__div-description {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px; 
+    padding: 10px;
 }
 
 /* Pour chaque <h3> : tailler la font & remonter de 5px */
 .c_section-hebergements-populaires__div-description h3 {
-    font-size: 16px; font-weight: bold;
+    font-size: 16px;
+    font-weight: bold;
     margin-top: -5px;
 }
 
@@ -522,17 +639,19 @@ form{
     padding-top: 50px;
 }
 
+/* Placer ses enfants en Ligne */
 .c_section-activites__div-les-articles {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;  
-   margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
 }
 
+/* Placer ses enfants en Colonne */
 .c_section-activites__article-duo {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* TAILLE (Largeur & Hauteur) des ARTICLES & IMAGES -------------------------------------------------- */
@@ -540,34 +659,39 @@ form{
 /* on taille la largeur (en px) des 6 articles & des 6 images */
 .c_section-activites__article-solo,
 .c_section-activites__article-duo,
-.c_section-activites__div-les-articles img { 
-    width: var(--activites__article_largeur); 
+.c_section-activites__div-les-articles img {
+    width: var(--activites__article_largeur);
 }
 
 
 /* on taille la hauteur (en px) des 6 images */
 .c_section-activites__article-solo img {
-   height: 390px; /* 1552px - 1162px */
+    height: 390px;
+    /* 1552px - 1162px */
 }
 
-.c_section-activites__article-duo-gauche-haut img{  
-   height: 180px; /* 1342px - 1162px */
+.c_section-activites__article-duo-gauche-haut img {
+    height: 180px;
+    /* 1342px - 1162px */
 }
 
-.c_section-activites__article-duo-gauche-bas img{
-    height: 110px; /* 1550px - 1440px */
+.c_section-activites__article-duo-gauche-bas img {
+    height: 110px;
+    /* 1550px - 1440px */
 }
 
-.c_section-activites__article-duo-droit-haut img{
-   height: 140px; /* 1300px - 1160px */
+.c_section-activites__article-duo-droit-haut img {
+    height: 140px;
+    /* 1300px - 1160px */
 }
 
-.c_section-activites__article-duo-droit-bas img{
-   height: 155px; /* 1550px - 1395px */
+.c_section-activites__article-duo-droit-bas img {
+    height: 155px;
+    /* 1550px - 1395px */
 }
 
 /* RADIUS & OMBRE grise -------------------------------------------------- */
- 
+
 /* Pour les 6 articles :
     - arrondir les 4 angles (haut & bas ; gauche & droite)
     - mettre 1 ombre grise
@@ -578,16 +702,17 @@ form{
 .c_section-activites__article-duo-droit-haut,
 .c_section-activites__article-duo-droit-bas {
     border-radius: var(--activite_radius);
-    box-shadow: 10px 10px 20px var(--couleur_gris); /* décalage x (de l'ombre); décalage y (de l'ombre); épaisseur de l'ombre */
+    box-shadow: 10px 10px 20px var(--couleur_gris);
+    /* décalage x (de l'ombre); décalage y (de l'ombre); épaisseur de l'ombre */
 }
- 
+
 /* Pour chaque image : 
     - arrondir les angles haut (gauche & droite)
 */
 .c_section-activites__div-les-articles img {
     border-radius: var(--activite_radius) var(--activite_radius) 0px 0px;
 }
- 
+
 /* Pour les titres <h2> & <h3> : tailler la font -------------------------------------------------- */
 .c_section-activites h2 {
     font-size: 25px;
@@ -595,73 +720,57 @@ form{
 
 /* Pour les <h3> : tailler la font & mettre marge gauche à 10 px */
 .c_section-activites__div-les-articles h3 {
-     font-size: 16px; font-weight: bold;
-     padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 10px;
 }
 
 /* Footer ----------------------------------------------------------------------------------------------------------------------------- */
 
-footer {    
-    margin-top: 70px;               /* 1670px - 1600px : marge extérieure Haut */
-    margin-left: 0px;
-    padding-top: 40px;              /* marge intérieure haut */
-
-   /* height: 210px; */             /* 1880px - 1670px */
-
-    display: flex;
-    flex-direction: row;            /* par défaut */
-    flex-wrap: nowrap;              /* retour à la ligne NON autorisé */
-    justify-content: flex-start;    /* ses 3 enfants sont placés au début */
-
-    background-color: var(--couleur_gris); /* Fond gris */
+/* Pour le <footer> : 
+    - placer ses enfants en ligne
+    - mettre le fond en gris
+    - poser un gap de 225px (500px - 275px) entre "A propos" & "Nos hébergements"
+    
+*/
+footer {
+    margin-top:40px; 
+    padding-left: 50px; padding-top: 30px; padding-bottom: 30px;
+    
+    display: flex; flex-direction: row;     
+    justify-content: flex-start; /* ses 3 enfants sont placés au début */
+    background: var(--couleur_gris);
+    
+    gap: 225px; /* gap1:  225px (500px - 275px) entre "A propos" & "Nos hébergements" */
+                /* gap2: 295px (960px - 665px) entre ""Nos hébergements" & "Assistance" */
 }
 
-/* Ses 3 enfants ------------------------------------ */
-.c_footer__div-a-propos {
-    margin-left: var(--marge_ext_gauche-droite);
-    display: flex;
-    flex-direction: column; justify-content: flex-start;
-}
+/* Le gap2 est de 295px => 70px de plus que 220px  */
+.c_footer__div-assistance { padding-left: 70px;  }
 
-/* Réduire la taille de l'espacement entre le titre et les liens */
-.c_footer__div-a-propos h2,
-.c_footer__div-nos-hebergements h2,
-.c_footer__div-assistance h2 {
-   margin-bottom:-5px;
-}
-
-.c_footer__div-nos-hebergements {    
-    margin-left: 220px;     /* 500px - 280px */
-    display: flex;
-    flex-direction: column; justify-content: flex-start;
-}
-
-.c_footer__div-assistance {   
-    margin-left: 300px; /* 960px - 660px */
-    display: flex;
-    flex-direction: column; justify-content: flex-start;
-}
-
-/* On met en forme <h2>, <li>, & <adress> ------ */
 footer h2 {
     font-size: 18px;
 }
 
 footer li {
-    font-size: 16px; 
-    list-style: none;       /* on supprime les puces */
-    margin-left: -40px;     /* on supprime le décalage */
+    font-size: 16px;
+    list-style: none;       /* oter les puces */
+    margin-left: -40px;     /* supprimer le décalage gauche */
+    line-height : 1.9;      /* espacer ses éléments */
 }
 
 /* Pour la balise <address> "Nous contacter" : passage d'italic (par défaut) à normal */
 .c_adress-nous-contacter {
-    font-style:normal;
- }
+    font-style: normal;
+}
 
-/* Au survol des éléments <a> du <footer> ------ */
+/* Au survol des éléments <a> du <footer> : 
+    - Pas de ligne Bleu au dessus du lien
+    - ligne Bleu au niveau du lien
+*/
 footer a:hover {
-    border-top-color: transparent;      /*  Pas de ligne Bleu au dessus du lien */
-    color: var(--couleur_bleu);         /* ligne Bleu au niveau du lien */
+    border-top-color: transparent;
+    color: var(--couleur_bleu);
 }
 
 
@@ -672,196 +781,522 @@ footer a:hover {
     - Il ne doit pas avoir de scrollbar horizontal.
 */
 
-/* @media TABLETTE ----------------------------------------------------------------------------------- */
-@media screen and (min-width: 768px) and (max-width: 991px) { 
-/* Pas de maquette ! */
-    
-}
-/* fin de @media TABLETTE */
-
 /* @media TELEPHONE ---------------------------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
 
 /* NAV : Logo & 2 Liens ---------------------------------------------------------------------------- */
 
-/* Pour le "c_nav" : 
-    - placer en colonne ses enfants (i.e. le logo & ses 2 liens) 
-    - les centrer.
-*/
-.c_nav {
-    display: flex; flex-direction: column; align-items: center;
-}
+    /* Pour la "c_nav" : 
+        - placer en colonne ses enfants (i.e. le logo & ses 2 liens) 
+        - les centrer
+        - mettre la marge externe droite à 0
+    */
+    .c_nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        margin-right: 0;
+    }
 
-/* Pour les 2 liens de la nav :
+    /* Pour les 2 liens de la nav :
+        - tailler sa largeur sur 100%
+        - placer au centre ses 2 liens
+        - mettre les marges externes Gauche & Droite à 0
+    */
+    .c_nav__div-liens {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Pour chaque <a> de "c_nav__div-liens" : 
+        - tailler sa largeur sur 50%
+        - placer une bordure de couleur gris (en bas de 15px) */
+    .c_nav__div-liens a {
+        width: 50%;
+        border-bottom: 2px solid var(--couleur_gris);
+        padding-bottom: 15px;
+        /* 130px - 115px */
+    }
+
+    /* Au survol des 2 liens :
+        - oter la bordure haute 
+        - placer une bordure (en bas) de couleur bleu
+    */
+    .c_nav__div-liens a:hover {
+        border-top: none;
+        padding-top: 0;
+        border-bottom: 3px solid var(--couleur_bleu);
+    }
+
+    /* Header : <h1> & <p> & <form> ---------------------------------------------------------------- */
+    /* Pour le header : cacher son <h1> ordinateur & afficher son <h1> responsive */
+    .c_h1 {
+        display: none;
+    }
+
+    .c_h1-responsive {
+        display: flex;
+        font-size: 25px;
+    }
+
+    /* Cacher le button "rechercher" ordinateur */
+    .c_form__button-rechercher {
+        display: none;
+    }
+
+    /* Styler & afficher le button "rechercher" responsive */
+    .c_form__button-rechercher-responsive {
+        display: flex;
+        justify-content: center;
+        /* Pour que le picto se mette au centre sur l'axe X */
+        align-items: center;
+        /* Pour que le picto se mette au centre sur l'axe Y */
+
+        border-radius: var(--formulaire_radius);
+        /* arrondir les 4 angles */
+        border-style: none;
+        /* oter la bordure */
+
+        background: var(--couleur_bleu);
+        color: var(--couleur_blanc);
+        font-size: 18px;
+
+        width: var(--formulaire_hauteur);
+
+        margin-left: -10px;
+        /* décaler à gauche */
+
+        cursor: pointer; /* représenter le curseur par une main */
+    }
+
+    /* Pour le header (i.e. <h1>, <p> & <form>) : mettre la marge gauche à 20px */
+    header {
+        margin-left: 20px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+
+              
+    /* <section> Filtre -------------------------------------------------------------- */
+    /* Pour la section "filtre" & c_div-infos : mettre la marge gauche à 20px */
+    .c_section-filtre, .c_div-infos {
+        margin-left: 20px;
+    }
+
+    /* Décaler à gauche les enfants de la section filtre */
+    .c_section-filtre ul {
+        margin-left: -40px;
+        margin-top: 0px;
+    }
+
+    /* Poser une marge externe Bas de 20px */
+    .c_div-infos { margin-bottom: 20px; }
+
+    /* Section HEBERGEMENTS --------------------------------------------------------------------------- */
+
+    /* Pour la section "hébergements" : 
+        - renverser ses enfants => mettre la section "populaires" avant la section "hébergements" 
+        - poser un gap de 40px
+    */
+    .c_section-hebergements {
+        flex-direction: column-reverse;
+        gap: 40px; 
+        /* 1300px - 1260px */
+        margin-left:0; 
+        margin-right: 0; 
+        padding-right:0;
+    }
+
+    /* Section POPULAIRES --------------------------------------------------------------------------- */
+    /* Pour la section "populaires" :
+        - tailler sa largeur sur 100%
+        - mettre le fond en gris
+        - oter l'arrondissement des 4 angles 
+    */
+    .c_section-hebergements-populaires {
+        width: 100%;
+        background-color: var(--couleur_gris); /* red; TEST */
+        border-radius: 0;
+        margin-left: -30px; margin-right: 0px; padding-right: 15px;
+    }
+
+    /* Pour le titre : tailler sa largeur sur 100% */
+    .c_section-hebergements-populaires h2 {
+        width: 100%; 
+        background-color: var(--couleur_gris);
+    }
+
+    /* Pour les Articles : tailler sa largeur & mettre ses marges internes à 0 */
+    .c_section-hebergements-populaires__div-les-articles {
+        width:  100%;
+        padding: 0; 
+        background-color: var(--couleur_gris);
+        padding-bottom: 20px;
+    }
+
+    /* Pour chaque Article : 
+        - tailler sa largeur sur 100% 
+        - poser un gap de 10px
+    */
+    .c_section-hebergements-populaires__article {
+        width: 98%; /* 100%; */
+        gap: 10px;
+        /* 930px - 920px */
+    }
+
+ /* Section "hébergements" -------------------------------------------------------------------------------------------- */
+ 
+    /* Pour la section "c_section-hebergements" :
     - tailler sa largeur sur 100%
-    - placer au centre ses 2 liens
-    - mettre les marges externes Gauche & Droite à 0
-*/
-.c_nav__div-liens {
-    width: 100%;
-    display: flex; flex-direction: row; text-align: center;
-    margin-left: 0px; margin-right: 0px;
-}
+    - oter l'arrondissement des 4 angles
+    - mettre le fond en blanc 
+    */
+    .c_section-hebergements__div-h-et-les-articles-et-a {
+        margin-top: -30px;
+        width: 100%;
+        border-radius: 0;
+        background-color: var(--couleur_blanc);
+        padding: 0;
+    }
 
-/* Pour chaque <a> de "c_nav__div-liens" : 
-    - tailler sa largeur sur 50%
-    - placer une bordure de couleur gris (en bas de 15px) */
-.c_nav__div-liens a {
-    width: 50%;
-    border-bottom: 2px solid var(--couleur_gris);
-    padding: 15px; /* 130px - 115px */
-}
+    /* Pour les Articles : 
+    - poser un gap de 10px 
+    - mettre le fond blanc
+    */
+    .c_section-hebergements__div-les-articles {
+        gap: 10px;
+        /* 2400px - 2390px */
+        background-color: var(--couleur_blanc); /* green; TEST */
+    }
 
-/* Au survol des 2 liens :
-    - oter la bordure haute
-    - placer une bordure (en bas) de couleur bleu
-*/
-.c_nav__div-liens a:hover {     
-    border-top: none;
-    border-bottom: 2px solid var(--couleur_bleu);
-}
+    /* Pour chaque Article : 
+    - tailler sa largeur sur 100% 
+    - mettre une bordure grise (puisque l'on est sur un fond blanc)
+    */
+    .c_section-hebergements__article {
+        width: 100%;
+        box-shadow: 10px 10px 20px var(--couleur_gris);
+    }
 
-/* Header : <h1> & <p> & <form> ---------------------------------------------------------------- */
-/* Pour le header : cacher son <h1> ordinateur & afficher son <h1> responsive */
-.c_h1 { display: none; }
-.c_h1-responsive { display: flex; font-size: 20px; }
+                /* Pour les sections "Populaires" & "Hébergements" : tailler les fonts & Réhausser verticalement si besoin ------- */
+                .c_section-hebergements-populaires__article h3
+                {
+                    font-size: 20px;
+                }
 
-/* Cacher le button "rechercher" ordinateur */
-.c_form__button-rechercher { display: none; }
+                .c_section-hebergements-populaires__article p {
+                    font-size: 17px;
+                }
 
-/* Créer & afficher le button "rechercher" responsive */
-.c_form__button-rechercher-responsive {
-    display: flex;
-    justify-content: center;                              /* Pour que le picto se mette au centre sur l'axe X */
-    align-items: center;                                  /* Pour que le picto se mette au centre sur l'axe Y */
+                .c_section-hebergements__article h3 {
+                    font-size: 18px;
+                }
 
-    border-radius: var(--formulaire_radius);    /* arrondir les 4 angles */
-    border-style: none;                         /* oter la bordure */
+                /*  Ajustement vertical */
+                .c_section-hebergements__article p {
+                    font-size: 14px;
+                }
 
-    background: var(--couleur_bleu);
-    color: var(--couleur_blanc); font-size: 18px;
+                /* Réhausser verticalement les Picto évaluations */
+                .c_section-hebergements__div-evaluation .fas {
+                    line-height: 0.1;
+                }
+                /* Fin de tailler les Fonts ------------------------ */
 
-    width: var(--formulaire_hauteur);
+    /* Section ACTIVITES ------------------------------------------------------------------------------------- */
+
+    /* Placer 30px au dessous de l'élément "Afficher plus" la section "Activités" */
+    .c_section-hebergements__a-afficher-plus {
+        margin-bottom: 30px;
+    }
+
+    /* Mettre une marge interne Gauche & Droite de 20px */
+    .c_section-hebergements, .c_section-activites {
+        padding: 0 20px; /* vertical | horizontal */
+    }
+
+    /* Pour la section "Activités" : 
+    - placer ses enfants (ie ses Articles) en colonne 
+    - avec un gap de 25px
+    */
+    .c_section-activites__div-les-articles {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        /* 2975px - 2950px */
+    }
+
+    /* Pour chaque Article : tailler sa largeur sur 100% */
+    .c_section-activites__article-solo,
+    .c_section-activites__article-duo {
+        width: 100%;
+    }
+
+    /* Pour chaque Article duo : poser un gap de 20px */
+    .c_section-activites__article-duo {
+        gap: 20px;
+        /* 3185px - 3165px */
+    }
+
+    /* Pour chaque <img> :
+    - tailler sa largeur sur 100%
+    - tailler sa hauteur sur 135px
+    */
+    .c_section-activites__article-solo img,
+    .c_section-activites__article-duo img {
+        width: 100%;
+        height: 135px;
+        /* 2895px - 2760px */
+    }
+
+    /* Footer ------------------------------------------------------------------------- */
+    :root {
+        --marge_ext_gauche-droite: 0px;
+    }
+
+    /* Pour le <footer> :
+    - placer ses enfants en colonne
+    - poser un gap de 5px
+    - poser une marge interne gauche de 30px
+    - poser une marge interne Haute & Bas de 20px
+    */
+    footer {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        /* 4275px - 4225px */
+        padding-left: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px; 
+    }
+
+    /* Pour chaque enfant du <footer> : 
+    - poser une marge externe gauche à 0 
+    */
+    .c_footer__div-a-propos, .c_footer__div-nos-hebergements, .c_footer__div-assistance {
+        margin-left: var(--marge_ext_gauche-droite);
+    }
+
+    /* Pour chaque <h2> réduire la marge Bas par rapport aux <li> */
+    footer h2 { margin-bottom: -5px; }
+
+    /* oter le padding-left (qui avait été mis pour la version Ordinateur) */
+    .c_footer__div-assistance { 
+        padding-left: 0;  
+    }
+
+    /* AJUSTER LES IMAGES ------------------------------------------------------------------------------ */
+   
+   /* Concernant les HEBERGEMENTS & ACTIVITES : Ajuster la position des images (dans son container) pour focaliser le type de lit (2 places, séparés, superposés)
+   Via la propriété "object-position: X% Y% (X : largeur de l'image ; Y : hauteur de l'image)
+   Plus Y est évelé, plus on "descend" ; Plus Y est faible, plus on "monte"
+   */
+   
+   /* Ajuster l'image "auberge-la-cannebiere" (de sorte à voir 2 lits superposés) */ 
+   .c_section-hebergements__article:nth-child(1) img {
+    /* .c_img-auberge-la-cannebiere { */ 
+        object-position: 100% 10%;
+        /* border-top: 3px solid yellow; TEST */
+    }
     
-    margin-left: -10px; /* décaler à gauche */
+    /* Ajuster l'image "hotel-du-port" (de sorte à voir 2 lits séparés) */
+    .c_section-hebergements__article:nth-child(2) img {
+    /* .c_img-hotel-du-port { */
+        object-position: 100% 85%;
+    }
 
-    cursor: pointer;
+    /* Ajuster l'image "hotel-de-la-mer" (de sorte à voir 1 lit 2 places) */
+    .c_section-hebergements__article:nth-child(4) img {
+    /* .c_img-hotel-de-la-mer { */
+        object-position: 100% 70%;
+    }
+
+    /* Ajuster l'image "hotel-chez-amina" (de sorte à voir 2 lits séparés) */
+    .c_section-hebergements__article:nth-child(6) img {
+    /* .c_img-hotel-chez-amina { */
+        object-position: 100% 70%;
+    }
+
+    /* Concernant les ACTIVITES : Ajuster les images */
+
+    /* Ajuster l'image "Notre-Dame-de-la-Garde" */
+    .c_section-activites__article-duo-droit-haut img {
+        object-position: 100% 20%;
+    }
+
+    /* Ajuster l'image "img-parc-longchamp" */
+    .c_section-activites__article-duo-droit-bas img {
+        object-position: 100% 55%;
+    }
+    /* fin de AJUSTER LES IMAGES -------------------------------------------------------------------------- */
+
 }
+/* fin de @media TELEPHONE */
 
-/* Pour le header (i.e. <h1>, <p> & <form>) : mettre la marge gauche à 20px */
+/* @media TABLETTE ----------------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+/* Pas de maquette ! 
+=> Choix arbitraires :
+    - Nav, Header & section "Filtres" : idem que la version ordinateur
+    - Footer: idem que la version ordinateur; je réduis juste le gap de ses enfants
+
+    - Section "Populaires" avant Section "Hébergements"
+    - Section "Populaires": je mets ses 3 articles (au départ en colonne) sur une ligne (soit 3 Articles sur une ligne)
+    - Section "Hébergements": je mets 3 articles par ligne
+    - Section "Activités": je mets les 3 1ers articles sur une ligne ; les 3 autres sur l'autre ligne
+*/
+
+/* Poser une marge externe de 25px */
 header { 
-    margin-left: 20px;
+    margin-left: 25px; 
 }
 
-/* <section> Filtre -------------------------------------------------------------- */
-/* Pour la section "filtre" & c_div-infos : mettre la marge gauche à 20px */
-.c_section-filtre, .c_div-infos { 
-    margin-left: 20px;
+main {
+    margin: 25px;
 }
-
-/* Décaler à gauche les enfants de la section filtre */
-.c_section-filtre ul { margin-left: -40px; margin-top: 0px; }
-
 
 /* Section HEBERGEMENTS --------------------------------------------------------------------------- */
 
 /* Pour la section "hébergements" : 
-    - renverser ses enfants (i.e. ses articles) => de la section "populaires" à la section "hébergements" 
+    - renverser ses enfants => mettre en 1er la section "populaires" puis la section "hébergements" 
     - poser un gap de 40px
 */
-.c_section-hebergements {    
+.c_section-hebergements {
     flex-direction: column-reverse;
-    gap: 40px; /* 1300px - 1260px */
+    gap: 40px;              
+    /* 1300px - 1260px */
 }
 
+/* Section POPULAIRES --------------------------------------------------------------------------- */
 /* Pour la section "populaires" :
     - tailler sa largeur sur 100%
-    - oter l'arrondissement des 4 angles */
+    - mettre le fond en gris (comme pour la version téléphone)
+    - oter le padding
+    - oter l'arrondissement des 4 angles 
+*/
 .c_section-hebergements-populaires {
     width: 100%;
-    background-color: pink;
-    border-radius: 0px;
-    padding: 0;
+    background-color: var(--couleur_gris); /* red; TEST */       
+    margin-left:-30px; margin-right:0px; padding-right: 20px;
+    border-radius: 0;
 }
 
-/* Pour chaque Article : 
+.c_section-hebergements-populaires h2 {
+     width: 100%; background-color: var(--couleur_gris); 
+}
+
+/*
     - tailler sa largeur sur 100% 
-    - poser un gap de 10px    
-*/ 
+    - mettre ses enfants en Ligne avec un gap de 10px
+*/
+.c_section-hebergements-populaires__div-les-articles {
+    width: 100%;    
+    flex-direction: row; 
+    gap: 10px;
+    background-color: var(--couleur_gris); /* green; TEST */  
+}
+
+/* Pour chaque Article : tailler sa largeur sur 100% (pour garantir une largeur des Articles identique) */
 .c_section-hebergements-populaires__article {
     width: 100%;
-    gap: 10px; /* 930px - 920px */
 }
 
-/* Pour la section "c_section-hebergements" :
+/* Pour chaque Image : tailler sa largeur sur 40% (pour garantir aucun problème au niveau de la Description associé) 
+ie. au niveau du Breakpoint : pas de prix (€) qui passe à la ligne  
+*/
+.c_section-hebergements-populaires__article img {
+    width: 40%;
+}
+
+/* Pour la Description :
+- poser une marge interne haute de 20px par rapport au titre <h3> 
+- tailler la font à 13px
+*/
+.c_section-hebergements-populaires__div-description p {
+    padding-top: 20px; 
+    font-size: 13px;
+}
+
+/* HEBERGEMENTS ----------------------------------------------------------------------- */ 
+/* Pour la section "hebergements" :
     - tailler sa largeur sur 100%
+    - mettre le fond en Blanc
+    - oter les marges internes
     - oter l'arrondissement des 4 angles
-    - mettre le fond en blanc 
-*/    
+*/
 .c_section-hebergements__div-h-et-les-articles-et-a {
     width: 100%;
-    border-radius: 0px;
-    background-color: var(--couleur_blanc);
+    background-color: var(--couleur-blanc);
     padding: 0;
+    border-radius: 0;
 }
 
-/* Pour chaque Article : poser un gap de 10px */
+/* Pour les Articles : 
+    - centrer les Articles & poser un gap de 20px 
+    - mettre le fond en Blanc
+*/
 .c_section-hebergements__div-les-articles {
-    gap: 10px; /* 2400px - 2390px */
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--couleur-blanc); /* pink; TEST */
 }
 
-/* Pour chaque Article : tailler sa largeur sur 100% */    
+/* Pour chaque Article : tailler sa largeur sur 30% */
 .c_section-hebergements__article {
-    width: 100%;
-}
+    width: 30%;
+    box-shadow: 10px 10px 20px var(--couleur_gris);
 
-/* Section ACTIVITES ------------------------------------------------------------------------------------- */
+}
+        
+/* ACTIVITES --------------------------------------------------------------------------------------- */
 
 /* Pour la section "Activités" : 
-    - placer ses enfants (ie ses Articles) en colonne 
-    - avec un gap de 25px
-*/    
+    - placer ses enfants (ie ses Articles) en Ligne 
+    - avec un gap de 20px
+    - mettre le fond en blanc
+*/
 .c_section-activites__div-les-articles {
-    display: flex; flex-direction: column; 
-    gap: 25px; /* 2975px - 2950px */
+    flex-direction: row; 
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--couleur_blanc); /* yellow; TEST */
+}             
+
+/* Pour chaque Article : tailler sa largeur sur 48% */
+.c_section-activites__article-solo,
+.c_section-activites__article-duo {
+    width: 48%;
 }
 
-/* Pour chaque Article : tailler sa largeur sur 100% */      
-.c_section-activites__article-solo, .c_section-activites__article-duo {    
-   width: 100%;
-}
-
-/* Pour chaque Article duo : poser un gap de 20px */
-.c_section-activites__article-duo {    
-    gap: 20px; /* 3185px - 3165px */
-}
-
-/* Pour chaque <img> :
-    - tailler sa largeur sur 100%
-    - tailler sa hauteur sur 135px
-*/
-.c_section-activites__article-solo img, .c_section-activites__article-duo img {
+/* Pour chaque <img> : tailler sa largeur sur 100%  */
+.c_section-activites__article-solo img,
+.c_section-activites__article-duo img {
     width: 100%;
-    height: 135px; /* 2895px - 2760px */
 }
 
-/* Footer ------------------------------------------------------------------------- */
-:root { --marge_ext_gauche-droite: 0px; }
-
-/* Pour le <footer> :
-    - placer ses enfants en colonne
-    - poser un gap de 50px
-    - poser une marge interne gauche de 30px
-*/
-footer {
-    display: flex; flex-direction: column;
-    gap: 50px;  /* 4275px - 4225px */
-    padding-left: 30px;
+/* Ajuster l'image "Notre-Dame-de-la-Garde" (pour que le toit de la basilique ne soit pas tronquée)*/
+.c_section-activites__article-duo-droit-haut img {
+    object-position: 100% 20%; 
+    /* border-top: 3px solid red; TEST */
 }
 
-/* Pour chaque enfant du <footer> : poser une marge externe gauche à 0 */
-.c_footer__div-a-propos, .c_footer__div-nos-hebergements, .c_footer__div-assistance {
-    margin-left: var(--marge_ext_gauche-droite);
+/* FOOTER ----------------------------------------------------------------------- */
+/* Réduire le gap à 100px */
+footer { 
+    gap: 100px; 
 }
 
-} /* fin de @media TELEPHONE */
+/* Pour l'élément "Assistance": oter le padding-left */
+.c_footer__div-assistance { 
+    padding-left: 0;  
+}
+
+}
+/* fin de @media TABLETTE */
