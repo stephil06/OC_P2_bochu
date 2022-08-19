@@ -48,26 +48,6 @@
     /* coeur */
 }
 
-/* COMPATIBILITE AVEC LES NAVIGATEURS FireFox & Chrome ---------------------------------------------------------------- */
-
-/* Pour garantir la compatibilité avec les navigateurs (dernière version) :
-    - FireFox  (103.0.2) 
-    - Chrome (104.0.5112.102)
-*/
-
-/* Problème : au niveau du placeholder (la croix n'est pas visible sur FireFox) */
-
-/* Mozilla Firefox */
-::-moz-placeholder { 
-    color: green;  text-align: center;
-}
-
-/* WebKit (i.e. Chrome & Safari) */
-::-webkit-input-placeholder { 
-    color: yellow;
-}
-
-
 /* ORDINATEUR---------------------------------------------------------------------------------------- */
 
 /* Cacher les éléments responsive ---------------------------------------------- */
