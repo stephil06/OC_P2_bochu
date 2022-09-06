@@ -84,6 +84,8 @@ body {
     max-width: 1920px; /* Largeur de mon écran PC : 1920px */
     margin-left: auto;
     margin-right: auto;
+
+    font-family:'Raleway', sans-serif;
 }
 
 /* NAV : Logo & 2 Liens ----------------------------------------------------------------------- */
@@ -401,8 +403,8 @@ form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 30px;
+   /*S2 justify-content: flex-start; */ /*S2 */  justify-content: space-between; /* S2 */
+    /* S2 gap: 30px; */
 }
 
 /* Pour chaque article, 
@@ -412,9 +414,10 @@ form {
     - on crée une bordure en blanc
 */
 .c_section-hebergements__article {
-    width: 245px; /* 245px; */
+    /* S2_debut */ width:30%; height: 48%; margin-bottom: 25px; /* S2_fin */
+    /* S2 width: 245px; */ /* 245px; */
     /* 335px - 90px */
-    height: 200px;
+    /* S2 height: 200px; */ /* 200px; */
     /* 717px - 517px */
 
     background-color: var(--couleur_blanc);
